@@ -561,6 +561,23 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
 }
 .cap-label::before { display: none; }
 
+/* State name labels (rendered as divIcons over each state polygon) */
+.state-label-icon { background: transparent; border: none; }
+.state-label {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: rgba(40, 40, 40, .82);
+  text-shadow:
+    0 0 4px #fff, 0 0 4px #fff, 0 0 4px #fff,
+    0 0 6px #fff, 0 0 6px #fff;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* ============================================================
    Leaflet popup
    ============================================================ */

@@ -126,6 +126,27 @@ async function load() {
     style: { color: "#1a1a1a", weight: 1.2, fill: false, opacity: 0.7 },
   }).addTo(map);
 
+  // State name labels. Anchors are hand-placed inside each polygon
+  // and clear of the capital city dots (Damaturu, Maiduguri, Yola).
+  // Verified inside-polygon via point-in-polygon test.
+  const STATE_LABELS = [
+    { name: "BORNO",   latlng: [12.60, 13.40] },
+    { name: "YOBE",    latlng: [12.50, 11.30] },
+    { name: "ADAMAWA", latlng: [10.00, 12.70] },
+  ];
+  STATE_LABELS.forEach(s => {
+    L.marker(s.latlng, {
+      interactive: false,
+      keyboard: false,
+      icon: L.divIcon({
+        className: "state-label-icon",
+        html: `<span class="state-label">${s.name}</span>`,
+        iconSize: [120, 18],
+        iconAnchor: [60, 9],
+      }),
+    }).addTo(map);
+  });
+
   L.geoJSON(caps, {
     pointToLayer: (f, latlng) =>
       L.circleMarker(latlng, { radius: 3, color: "#1a1a1a", weight: 1, fillColor: "#fff", fillOpacity: 1 })
