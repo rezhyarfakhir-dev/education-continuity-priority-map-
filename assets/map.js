@@ -122,9 +122,18 @@ async function load() {
 
   const lgaLayer = L.geoJSON(polys, { style: styleLGA, onEachFeature }).addTo(map);
 
-  L.geoJSON(states, {
-    style: { color: "#0d4f4f", weight: 1.6, fill: false, opacity: 0.85 },
+  // State boundaries: rendered as two stacked layers - a wider white
+  // "casing" underneath and the teal line on top - so the border stays
+  // legible everywhere, including where it cuts between LGA polygons of
+  // similar tone. Bring to front in a deferred tick so they sit above
+  // the high-priority LGA polygons (which also bringToFront on add).
+  const stateCasing = L.geoJSON(states, {
+    style: { color: "#ffffff", weight: 5.5, fill: false, opacity: 0.9, lineJoin: "round", lineCap: "round" },
   }).addTo(map);
+  const stateLine = L.geoJSON(states, {
+    style: { color: "#0d4f4f", weight: 2.4, fill: false, opacity: 1, lineJoin: "round", lineCap: "round" },
+  }).addTo(map);
+  setTimeout(() => { stateCasing.bringToFront(); stateLine.bringToFront(); }, 0);
 
   // State name labels. Anchors are hand-placed inside each polygon
   // and clear of the capital city dots (Damaturu, Maiduguri, Yola).
