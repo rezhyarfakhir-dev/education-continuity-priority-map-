@@ -126,7 +126,7 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   font-family: var(--serif);
   font-weight: 700;
   font-size: 32px;
-  color: var(--orange);
+  color: var(--map-hi);
   line-height: 1;
 }
 .finding-split-lbl { color: rgba(255,255,255,.85); }
