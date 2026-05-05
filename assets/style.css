@@ -230,7 +230,7 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   position: relative;
   background: #fff;
   border: 1px solid var(--rule);
-  border-left: 4px solid var(--orange);
+  border-left: 4px solid var(--map-hi);
   border-radius: 3px;
   padding: 14px 16px 14px 18px;
   box-shadow: 0 6px 18px -12px rgba(13,79,79,.25);
@@ -250,7 +250,7 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   line-height: 1.4;
 }
 .anno-lead strong {
-  color: var(--orange);
+  color: var(--map-hi);
   font-family: var(--serif);
   font-weight: 700;
   font-size: 18px;
