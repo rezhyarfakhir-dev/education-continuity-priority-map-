@@ -26,7 +26,7 @@ def main():
         "events": 0, "fatalities": 0, "idp_individuals": 0, "idp_sites": 0,
         "total_schools": 0, "closed_schools": 0,
         "education_pin": 0, "education_severity": 0,
-        "priority_reason": "", "priority_class": "",
+        "priority_class": "", "score_basis": "",
     }).set_index("pcode").to_dict(orient="index")
 
     for f in polys["features"]:
@@ -51,7 +51,8 @@ def main():
             "school_age_within_5km_pct": _f(rec.get("school_age_population_share")),
             "composite_score": _f(rec.get("composite_score")),
             "priority_class": rec.get("priority_class", ""),
-            "priority_reason": rec.get("priority_reason", "") or "",
+            "score_basis": rec.get("score_basis", "") or "",
+            "indicators_used": int(rec.get("indicators_used", 0) or 0),
         }
     out_geo = ASSETS / "data.geojson"
     with open(out_geo, "w", encoding="utf-8") as f:
@@ -91,6 +92,10 @@ def main():
         "school_age_by_state": dict(zip(pop["state"].tolist(), [int(x) for x in pop["school_age_5_14"].tolist()])),
         "scored_lgas": int(len(scores)),
         "validation_needed_lgas": 0,
+        "score_basis_counts": {
+            "4_indicators": int((scores["score_basis"] == "4_indicators").sum()),
+            "3_indicators_no_heigit": int((scores["score_basis"] == "3_indicators_no_heigit").sum()),
+        },
         "priority_counts": {
             "high": int(len(high)),
             "medium": int(len(medium)),

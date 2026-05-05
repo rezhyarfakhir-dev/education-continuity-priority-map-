@@ -16,9 +16,17 @@ indicators:
 3. **OCHA JIAF 2026 Education sector severity (1 to 5)**
 4. Inverse of school age population within 5 km of an education facility (HeiGIT 2026)
 
-Each indicator is min max normalised to `[0, 1]`. The mean of the four is
-tercile classified into **high, medium, lower** priority and rendered as a
-choropleth on a Leaflet map, with full per LGA detail in the popups.
+Each indicator is min max normalised to `[0, 1]`. The composite is a
+**pairwise** unweighted mean (`skipna=True`): indicators 1 to 3 cover all
+65 LGAs, while indicator 4 (HeiGIT) is missing for 35 of 65 LGAs. Those
+35 LGAs are scored on the 3 available indicators rather than imputed to a
+worst-case value. Each LGA carries a `score_basis` flag
+(`4_indicators` or `3_indicators_no_heigit`) which is surfaced in the
+popup. See `docs/missing_data_policy.md`.
+
+The composite is tercile classified into **high, medium, lower** priority
+and rendered as a choropleth on a Leaflet map, with full per LGA detail in
+the popups.
 
 All 65 LGAs are scored, including the 21 in Adamawa. The OCHA JIAF
 Education layer is the official 2026 humanitarian community estimate. It

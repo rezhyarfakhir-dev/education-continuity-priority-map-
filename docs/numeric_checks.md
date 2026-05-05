@@ -115,7 +115,15 @@ the leading "A" inside the prefix.
 ## HeiGIT 5 km coverage
 
 HeiGIT publishes one row per (LGA, distance band) only when the band
-captures population. An LGA that does not appear at the 5 km band has 0 %
-of its school age population within 5 km, so weak access is 100 %. The
-cleaning script treats a missing 5 km row as 0 % share rather than as a
-match failure.
+captures population. An LGA that does not appear at the 5 km band may
+either (a) genuinely have no school age population within 5 km, or (b)
+have no facility data near it at all. The two cases are not
+distinguishable from the published file alone.
+
+For BAY, 30 of 65 LGAs have a 5 km row; the other **35 are dropped from
+the access indicator and scored on the remaining 3 indicators using a
+pairwise mean** (`skipna=True`). Each row in
+`data/clean/lga_priority_scores.csv` carries a `score_basis` column
+(`4_indicators` or `3_indicators_no_heigit`) and the count of indicators
+used (`indicators_used`), and both are exported into the geojson popup.
+See `docs/missing_data_policy.md`.

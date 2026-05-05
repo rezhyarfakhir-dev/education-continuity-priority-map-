@@ -22,10 +22,23 @@ Each indicator is min max normalised across the scored set:
 score_norm_i = (x_i - min(x)) / (max(x) - min(x))
 ```
 
-The composite score is the unweighted mean of the four normalised indicators.
+The composite score is the **pairwise** unweighted mean of the available
+normalised indicators (`pandas.DataFrame.mean(axis=1, skipna=True)`).
+Indicators 1 to 3 (ACLED, DTM, JIAF) cover all 65 LGAs without nulls, so
+for every LGA the mean is computed over at least 3 of the 4 components.
+Indicator 4 (HeiGIT 5 km accessibility) is missing for 35 of the 65 BAY
+LGAs. Those 35 LGAs are scored on the remaining 3 indicators rather than
+being imputed to a worst case value of 100% beyond 5 km. See
+`docs/missing_data_policy.md` for the rationale.
+
 Equal weighting is used because there is no defensible empirical basis to
 weight one indicator over another at this stage. Weights would be calibrated
 in country with the contracting authority before any operational use.
+
+Each LGA's `score_basis` ("4_indicators" or "3_indicators_no_heigit") is
+carried through to `data/clean/lga_priority_scores.csv`,
+`assets/data.geojson`, and the popup, so the reader can always see how
+many of the four components contributed to the displayed composite.
 
 ## Classification
 

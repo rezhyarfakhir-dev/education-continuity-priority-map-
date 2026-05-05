@@ -67,8 +67,11 @@ function popupHtml(p) {
     ? `${p.education_severity}${p.education_severity_label ? ", " + p.education_severity_label : ""}`
     : "n/a";
   const accessTxt = (p.school_age_within_5km_pct === null || p.school_age_within_5km_pct === undefined || Number.isNaN(p.school_age_within_5km_pct))
-    ? "n/a"
+    ? "<em>no HeiGIT coverage</em>"
     : `${(100 - Number(p.school_age_within_5km_pct)).toFixed(0)}% beyond 5 km`;
+  const basisTxt = (p.score_basis === "3_indicators_no_heigit")
+    ? `<p class="pop-foot" style="font-style:normal;">Composite computed from 3 of 4 indicators (HeiGIT access data unavailable for this LGA).</p>`
+    : "";
   return `
     <h3>${p.lga} <span class="pop-state">(${p.state})</span></h3>
     <span class="pop-class ${badgeCls}">${CLASS_LABEL[cls]}</span>
@@ -79,6 +82,7 @@ function popupHtml(p) {
       <tr><td class="k">School access</td><td class="v">${accessTxt}</td></tr>
       <tr><td class="k">Composite score</td><td class="v">${p.composite_score === null ? "n/a" : Number(p.composite_score).toFixed(2)}</td></tr>
     </table>
+    ${basisTxt}
     <p class="pop-foot">Sources: ACLED, IOM DTM R50, OCHA JIAF 2026, HeiGIT.</p>
   `;
 }

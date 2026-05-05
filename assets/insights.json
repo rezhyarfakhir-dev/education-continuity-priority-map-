@@ -8,6 +8,10 @@
   },
   "scored_lgas": 65,
   "validation_needed_lgas": 0,
+  "score_basis_counts": {
+    "4_indicators": 30,
+    "3_indicators_no_heigit": 35
+  },
   "priority_counts": {
     "high": 22,
     "medium": 21,
@@ -25,19 +29,14 @@
       "composite_score": 0.8357791755325981
     },
     {
-      "lga_name": "Damboa",
-      "state": "Borno",
-      "composite_score": 0.808575666515687
-    },
-    {
       "lga_name": "Monguno",
       "state": "Borno",
       "composite_score": 0.7605817554495471
     },
     {
-      "lga_name": "Geidam",
-      "state": "Yobe",
-      "composite_score": 0.6974951445697919
+      "lga_name": "Damboa",
+      "state": "Borno",
+      "composite_score": 0.7447675553542493
     },
     {
       "lga_name": "Konduga",
@@ -50,29 +49,19 @@
       "composite_score": 0.6062327787130579
     },
     {
+      "lga_name": "Geidam",
+      "state": "Yobe",
+      "composite_score": 0.5966601927597225
+    },
+    {
       "lga_name": "Ngala",
       "state": "Borno",
       "composite_score": 0.5769820652878352
     },
     {
-      "lga_name": "Gulani",
-      "state": "Yobe",
-      "composite_score": 0.5755349739790068
-    },
-    {
-      "lga_name": "Dikwa",
-      "state": "Borno",
-      "composite_score": 0.5684597936827728
-    },
-    {
       "lga_name": "Gujba",
       "state": "Yobe",
       "composite_score": 0.5523872990634292
-    },
-    {
-      "lga_name": "Kala/Balge",
-      "state": "Borno",
-      "composite_score": 0.5504347132008717
     },
     {
       "lga_name": "Michika",
@@ -90,11 +79,6 @@
       "composite_score": 0.476417219356656
     },
     {
-      "lga_name": "Madagali",
-      "state": "Adamawa",
-      "composite_score": 0.4710191154323402
-    },
-    {
       "lga_name": "Jere",
       "state": "Borno",
       "composite_score": 0.4656015564305472
@@ -110,19 +94,39 @@
       "composite_score": 0.4460439061846084
     },
     {
-      "lga_name": "Lamurde",
-      "state": "Adamawa",
-      "composite_score": 0.4223162471975414
+      "lga_name": "Gulani",
+      "state": "Yobe",
+      "composite_score": 0.434046631972009
     },
     {
-      "lga_name": "Nganzai",
+      "lga_name": "Dikwa",
       "state": "Borno",
-      "composite_score": 0.4199897750511247
+      "composite_score": 0.424613058243697
     },
     {
       "lga_name": "Mafa",
       "state": "Borno",
       "composite_score": 0.412938052710722
+    },
+    {
+      "lga_name": "Hong",
+      "state": "Adamawa",
+      "composite_score": 0.4113979078801435
+    },
+    {
+      "lga_name": "Kukawa",
+      "state": "Borno",
+      "composite_score": 0.4010613130891757
+    },
+    {
+      "lga_name": "Kala/Balge",
+      "state": "Borno",
+      "composite_score": 0.4005796176011622
+    },
+    {
+      "lga_name": "Girei",
+      "state": "Adamawa",
+      "composite_score": 0.3996220050415944
     }
   ],
   "borno_share_of_recent_conflict_pct": 83.9,
