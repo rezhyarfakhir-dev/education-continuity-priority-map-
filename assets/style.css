@@ -93,7 +93,6 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   line-height: 1.1;
   letter-spacing: -0.018em;
   color: #fff;
-  max-width: 880px;
 }
 .standfirst {
   margin: 0 0 26px;
@@ -101,7 +100,6 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   font-size: 19.5px;
   line-height: 1.5;
   color: rgba(255,255,255,.88);
-  max-width: 800px;
   font-weight: 400;
 }
 .standfirst strong { color: #fff; font-weight: 600; }
