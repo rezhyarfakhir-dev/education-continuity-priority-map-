@@ -123,7 +123,7 @@ async function load() {
   const lgaLayer = L.geoJSON(polys, { style: styleLGA, onEachFeature }).addTo(map);
 
   L.geoJSON(states, {
-    style: { color: "#1a1a1a", weight: 1.2, fill: false, opacity: 0.7 },
+    style: { color: "#0d4f4f", weight: 1.6, fill: false, opacity: 0.85 },
   }).addTo(map);
 
   // State name labels. Anchors are hand-placed inside each polygon
