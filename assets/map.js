@@ -1,38 +1,51 @@
-// Education Continuity Priority Map - Leaflet renderer
+// Education Continuity Priority Map, editorial briefing renderer.
+// Visual goal (per the Visual Artifact Strategy doc):
+//   conclusion in the foreground, data in the background.
+// High priority polygons sit on top; medium and lower polygons
+// are desaturated so the eye lands on red first.
 
-// Severity palette tuned to the brand (teal/orange/gray):
-//   high    = red       (semantic: highest risk)
-//   medium  = brand orange
-//   low     = amber
-//   validation_needed = gray
 const COLORS = {
-  high: "#b91c1c",
-  medium: "#ea7317",
-  low: "#fbbf24",
-  validation_needed: "#9ca3af",
+  high:    "#b42318",
+  medium:  "#c98b6b",
+  low:     "#e6d6ba",
+};
+const FILL_OPACITY = {
+  high:    0.85,
+  medium:  0.55,
+  low:     0.40,
+};
+const STROKE = {
+  high:    { color: "#7a1410", weight: 0.9 },
+  medium:  { color: "#7d4f3a", weight: 0.5 },
+  low:     { color: "#9a8050", weight: 0.4 },
 };
 const CLASS_LABEL = {
-  high: "High priority",
-  medium: "Medium priority",
-  low: "Lower priority",
-  validation_needed: "Validation needed",
+  high:    "High priority",
+  medium:  "Medium priority",
+  low:     "Lower priority",
 };
 
-const map = L.map("map", { zoomControl: true, scrollWheelZoom: false }).setView([11.4, 12.7], 7);
+const map = L.map("map", {
+  zoomControl: true,
+  scrollWheelZoom: false,
+  attributionControl: true,
+}).setView([11.4, 12.7], 7);
 
-L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+// CartoDB Positron (light, no labels) keeps basemap quiet so the
+// choropleth dominates.
+L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png", {
   maxZoom: 11,
   minZoom: 6,
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
 }).addTo(map);
 
 function styleLGA(feature) {
-  const cls = feature.properties.priority_class || "validation_needed";
+  const cls = feature.properties.priority_class || "low";
   return {
-    color: "#333",
-    weight: 0.6,
-    fillColor: COLORS[cls] || COLORS.validation_needed,
-    fillOpacity: 0.78,
+    color: STROKE[cls].color,
+    weight: STROKE[cls].weight,
+    fillColor: COLORS[cls],
+    fillOpacity: FILL_OPACITY[cls],
   };
 }
 
@@ -41,38 +54,44 @@ function fmt(n) {
   if (typeof n === "number") return n.toLocaleString();
   return n;
 }
-function fmtPct(n) {
-  if (n === null || n === undefined || Number.isNaN(n)) return "n/a";
-  return `${Number(n).toFixed(1)}%`;
-}
 
+// Trimmed popup. Per the Visual Artifact Strategy section 4
+// (conclusion in foreground, data in background) and reviewer
+// feedback (too many indicators visible), the popup now shows
+// only the four indicators that actually drive the score, the
+// composite, and one source line. Nothing else.
 function popupHtml(p) {
-  const cls = p.priority_class || "validation_needed";
-  const badgeCls = { high: "pop-hi", medium: "pop-med", low: "pop-lo", validation_needed: "pop-val" }[cls] || "pop-val";
-  const reason = p.priority_reason ? `<p style="margin:6px 0 0;color:#555;font-size:12px;font-style:italic;">${p.priority_reason}</p>` : "";
+  const cls = p.priority_class || "low";
+  const badgeCls = { high: "pop-hi", medium: "pop-med", low: "pop-lo" }[cls];
+  const sevTxt = p.education_severity
+    ? `${p.education_severity}${p.education_severity_label ? ", " + p.education_severity_label : ""}`
+    : "n/a";
+  const accessTxt = (p.school_age_within_5km_pct === null || p.school_age_within_5km_pct === undefined || Number.isNaN(p.school_age_within_5km_pct))
+    ? "n/a"
+    : `${(100 - Number(p.school_age_within_5km_pct)).toFixed(0)}% beyond 5 km`;
   return `
-    <h3>${p.lga} <small style="color:#666;font-weight:400;">(${p.state})</small></h3>
+    <h3>${p.lga} <span class="pop-state">(${p.state})</span></h3>
     <span class="pop-class ${badgeCls}">${CLASS_LABEL[cls]}</span>
     <table>
-      <tr><td class="k">ACLED events 2020-26</td><td class="v">${fmt(p.events)}</td></tr>
-      <tr><td class="k">Fatalities</td><td class="v">${fmt(p.fatalities)}</td></tr>
-      <tr><td class="k">IDP individuals (DTM R50)</td><td class="v">${fmt(p.idp_individuals)}</td></tr>
-      <tr><td class="k">Education PiN (JIAF 2026)</td><td class="v">${fmt(p.education_pin)}</td></tr>
-      <tr><td class="k">Education severity (JIAF 2026)</td><td class="v">${p.education_severity || "n/a"}${p.education_severity_label ? " · " + p.education_severity_label : ""}</td></tr>
-      <tr><td class="k">School-age within 5km of school</td><td class="v">${fmtPct(p.school_age_within_5km_pct)}</td></tr>
-      <tr><td class="k">Schools listed / closed (iMMAP 2019, context)</td><td class="v">${fmt(p.total_schools)} / ${fmt(p.closed_schools)}</td></tr>
+      <tr><td class="k">Conflict events since 2020</td><td class="v">${fmt(p.events)}</td></tr>
+      <tr><td class="k">Displaced individuals</td><td class="v">${fmt(p.idp_individuals)}</td></tr>
+      <tr><td class="k">Education severity (JIAF 2026)</td><td class="v">${sevTxt}</td></tr>
+      <tr><td class="k">School access</td><td class="v">${accessTxt}</td></tr>
       <tr><td class="k">Composite score</td><td class="v">${p.composite_score === null ? "n/a" : Number(p.composite_score).toFixed(2)}</td></tr>
     </table>
-    ${reason}
+    <p class="pop-foot">Sources: ACLED, IOM DTM R50, OCHA JIAF 2026, HeiGIT.</p>
   `;
 }
 
 function onEachFeature(feature, layer) {
-  layer.bindPopup(popupHtml(feature.properties), { maxWidth: 320 });
+  const cls = feature.properties.priority_class || "low";
+  layer.bindPopup(popupHtml(feature.properties), { maxWidth: 320, autoPan: true });
   layer.on({
-    mouseover: e => e.target.setStyle({ weight: 2, color: "#000" }),
-    mouseout: e => e.target.setStyle({ weight: 0.6, color: "#333" }),
+    mouseover: e => e.target.setStyle({ weight: 1.6, color: "#000" }),
+    mouseout:  e => e.target.setStyle(STROKE[cls]),
   });
+  // Bring high priority polygons to the top so they read first.
+  if (cls === "high") setTimeout(() => layer.bringToFront(), 0);
 }
 
 function buildLegend() {
@@ -80,38 +99,30 @@ function buildLegend() {
   el.innerHTML = `
     <span class="title">Priority class (LGA)</span>
     <div><span class="swatch sw-hi"></span> High priority</div>
-    <div><span class="swatch sw-med"></span> Medium priority</div>
-    <div><span class="swatch sw-lo"></span> Lower priority</div>
+    <div><span class="swatch sw-med"></span> Medium</div>
+    <div><span class="swatch sw-lo"></span> Lower</div>
   `;
 }
 
-// Three permanent map callouts that force the conclusion without
-// requiring the viewer to click. Coordinates are approximate cluster
-// anchors over LGA polygons (chosen to avoid covering the polygon fill).
+// Two permanent map callouts. The strategy doc allows two to four;
+// fewer is better. The inline finding line above the map already
+// names the Adamawa count, so the third callout was removed to
+// reduce visual noise.
 function addCallouts(map) {
   const callouts = [
     {
       latlng: [11.65, 13.55],
       direction: "right",
-      html: `<strong>Southern Borno belt</strong><br>10+ high-priority LGAs cluster here<br><span class="co-sub">Bama · Gwoza · Damboa · Konduga</span>`,
+      html: `<strong>Southern Borno belt</strong>10 high priority LGAs cluster here<span class="co-sub">Bama, Gwoza, Damboa, Konduga</span>`,
     },
     {
       latlng: [13.05, 12.35],
       direction: "top",
-      html: `<strong>Northern frontier corridor</strong><br>5 high-priority LGAs along the Lake Chad / Yobe border<br><span class="co-sub">Monguno · Mobbar · Abadam · Geidam</span>`,
-    },
-    {
-      latlng: [10.85, 13.40],
-      direction: "right",
-      html: `<strong>Northern Adamawa</strong><br>4 LGAs reach high priority<br><span class="co-sub">JIAF 2026 confirms severe education stress</span>`,
+      html: `<strong>Northern frontier corridor</strong>Lake Chad and Yobe border<span class="co-sub">Monguno, Mobbar, Abadam, Geidam</span>`,
     },
   ];
   callouts.forEach(c => {
-    L.marker(c.latlng, {
-      opacity: 0,
-      interactive: false,
-      keyboard: false,
-    })
+    L.marker(c.latlng, { opacity: 0, interactive: false, keyboard: false })
       .addTo(map)
       .bindTooltip(c.html, {
         permanent: true,
@@ -133,34 +144,40 @@ async function load() {
   const lgaLayer = L.geoJSON(polys, { style: styleLGA, onEachFeature }).addTo(map);
 
   L.geoJSON(states, {
-    style: { color: "#222", weight: 1.6, fill: false, opacity: 0.85 },
+    style: { color: "#1a1a1a", weight: 1.2, fill: false, opacity: 0.7 },
   }).addTo(map);
 
   L.geoJSON(caps, {
     pointToLayer: (f, latlng) =>
-      L.circleMarker(latlng, { radius: 4, color: "#000", weight: 1, fillColor: "#fff", fillOpacity: 1 })
-        .bindTooltip(f.properties.name || "", { permanent: true, direction: "right", offset: [6, 0], className: "cap-label" }),
+      L.circleMarker(latlng, { radius: 3, color: "#1a1a1a", weight: 1, fillColor: "#fff", fillOpacity: 1 })
+        .bindTooltip(f.properties.name || "", {
+          permanent: true,
+          direction: "right",
+          offset: [6, 0],
+          className: "cap-label",
+        }),
   }).addTo(map);
 
   addCallouts(map);
-
   map.fitBounds(lgaLayer.getBounds(), { padding: [10, 10] });
 
   buildLegend();
-  renderInsights(insights);
+  renderFindings(insights);
 }
 
-function renderInsights(d) {
+function renderFindings(d) {
+  const high = d.priority_counts.high;
   const kpiEl = document.getElementById("kpi-high-num");
-  if (kpiEl) kpiEl.textContent = d.priority_counts.high;
-  document.getElementById("insight-conflict-t").textContent =
-    `Borno accounts for ${d.borno_share_of_recent_conflict_pct}% of the ${fmt(d.bay_acled_events_2020_2026)} ACLED political-violence events recorded across BAY since 2020. Conflict exposure is geographically concentrated, which lets a small number of LGAs be prioritised.`;
+  if (kpiEl) kpiEl.textContent = high;
 
-  document.getElementById("insight-displaced-t").textContent =
-    `IOM DTM Round 50 (Oct 2025) records ${fmt(d.bay_idp_individuals_dtm_r50)} displaced individuals across ${d.total_lgas_bay} BAY LGAs. The school-age population (5-14) of the three states is ${fmt(d.total_school_age_5_14)}.`;
+  const cellConflict = document.getElementById("cell-conflict");
+  if (cellConflict) cellConflict.textContent = fmt(d.bay_acled_events_2020_2026);
 
-  document.getElementById("insight-validation-t").textContent =
-    `All 65 BAY LGAs (including 21 in Adamawa) are scored using the OCHA JIAF 2026 Education sector severity layer, which the Education Cluster agrees as the official 2026 estimate. Total Education sector PiN across BAY: ${fmt(d.bay_education_pin_jiaf_2026)} individuals. The earlier iMMAP 2019 school list undercounted Adamawa (0 closures recorded state wide); JIAF 2026 resolves that data ceiling.`;
+  const cellIdp = document.getElementById("cell-idp");
+  if (cellIdp) cellIdp.textContent = fmt(d.bay_idp_individuals_dtm_r50);
+
+  const cellPin = document.getElementById("cell-pin");
+  if (cellPin) cellPin.textContent = fmt(d.bay_education_pin_jiaf_2026);
 }
 
 load().catch(err => {
