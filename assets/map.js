@@ -5,19 +5,19 @@
 // are desaturated so the eye lands on red first.
 
 const COLORS = {
-  high:    "#0d4f4f",
-  medium:  "#5a9090",
-  low:     "#c8dcdc",
+  high:    "#b42318",   // red - high priority (per Visual Artifact Strategy)
+  medium:  "#e8853b",   // orange - medium
+  low:     "#f3d77a",   // yellow - lower
 };
 const FILL_OPACITY = {
-  high:    0.85,
-  medium:  0.55,
-  low:     0.45,
+  high:    0.88,
+  medium:  0.62,
+  low:     0.55,
 };
 const STROKE = {
-  high:    { color: "#063535", weight: 0.9 },
-  medium:  { color: "#3d6e6e", weight: 0.5 },
-  low:     { color: "#7da6a6", weight: 0.4 },
+  high:    { color: "#7a1410", weight: 0.9 },
+  medium:  { color: "#a35820", weight: 0.5 },
+  low:     { color: "#a08a3a", weight: 0.4 },
 };
 const CLASS_LABEL = {
   high:    "High priority",
