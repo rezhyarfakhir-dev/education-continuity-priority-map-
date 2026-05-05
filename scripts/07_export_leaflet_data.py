@@ -19,7 +19,8 @@ def main():
         polys = json.load(f)
 
     scored = scores.fillna({"events": 0, "fatalities": 0, "idp_individuals": 0, "idp_sites": 0,
-                             "total_schools": 0, "closed_schools": 0}).set_index("pcode").to_dict(orient="index")
+                             "total_schools": 0, "closed_schools": 0,
+                             "priority_reason": "", "priority_class": ""}).set_index("pcode").to_dict(orient="index")
     for f in polys["features"]:
         p = f["properties"]
         rec = scored.get(p["adm2_pcode"], {})
@@ -42,7 +43,7 @@ def main():
         }
     out_geo = ASSETS / "data.geojson"
     with open(out_geo, "w", encoding="utf-8") as f:
-        json.dump(polys, f, separators=(",", ":"))
+        json.dump(polys, f, separators=(",", ":"), allow_nan=False)
     print(f"wrote {out_geo.name} ({len(polys['features'])} features)")
 
     # copy state polygons + capitals as-is
@@ -94,7 +95,7 @@ def main():
         },
     }
     with open(ASSETS / "insights.json", "w", encoding="utf-8") as f:
-        json.dump(insights, f, indent=2)
+        json.dump(insights, f, indent=2, allow_nan=False)
     print(f"wrote insights.json")
     print(json.dumps({k: v for k, v in insights.items() if k != "high_priority_lgas"}, indent=2))
 
