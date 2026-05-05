@@ -189,6 +189,18 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
 .map-wrap {
   position: relative;
   margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-areas:
+    "stage anno"
+    "hint  hint";
+  column-gap: 18px;
+  row-gap: 10px;
+  align-items: stretch;
+}
+.map-stage {
+  grid-area: stage;
+  position: relative;
   box-shadow: 0 1px 0 var(--rule), 0 14px 36px -18px rgba(13,79,79,.22);
   border-radius: 4px;
   overflow: hidden;
@@ -199,10 +211,58 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   background: #f1ede4;
 }
 .map-hint {
-  margin: 10px 4px 0;
+  grid-area: hint;
+  margin: 0 4px;
   font-size: 12.5px;
   color: var(--ink-3);
   font-style: italic;
+}
+
+/* Map annotations (moved out of the Leaflet canvas) */
+.map-annotations {
+  grid-area: anno;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: start;
+}
+.anno {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--orange);
+  border-radius: 3px;
+  padding: 14px 16px 14px 18px;
+  box-shadow: 0 6px 18px -12px rgba(13,79,79,.25);
+}
+.anno-eyebrow {
+  margin: 0 0 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+.anno-lead {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.anno-lead strong {
+  color: var(--orange);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 2px;
+}
+.anno-list {
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: .01em;
 }
 
 /* Legend */
@@ -583,6 +643,15 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   .finding-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.10); }
   .finding-cell:last-child { border-bottom: none; }
   #map { height: 460px; }
+  .map-wrap {
+    grid-template-columns: 1fr;
+    grid-template-areas: "stage" "anno" "hint";
+  }
+  .map-annotations {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .anno { flex: 1 1 0; min-width: 0; }
   .brief-main { padding: 26px 22px 48px; }
   .field-note { padding: 16px 18px; }
   .cta-band { padding: 22px 22px; gap: 18px; }

@@ -162,13 +162,11 @@ async function load() {
         }),
   }).addTo(map);
 
-  addCallouts(map);
-  // Extend bounds so the off-polygon callouts (east in Cameroon,
-  // north in Niger) stay on canvas at any viewport width.
-  const b = lgaLayer.getBounds();
-  b.extend([11.45, 14.60]);   // east room for Southern Borno callout
-  b.extend([14.30, 12.20]);   // north room for Northern frontier callout
-  map.fitBounds(b, { padding: [12, 12] });
+  // Permanent map callouts moved out of the Leaflet canvas into the
+  // page layout (see .map-annotations in style.css) so they never
+  // overlap polygons at any viewport width.
+  // Extend bounds slightly so the choropleth fills the stage cleanly.
+  map.fitBounds(lgaLayer.getBounds(), { padding: [12, 12] });
 
   buildLegend();
   renderFindings(insights);
