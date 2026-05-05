@@ -33,29 +33,43 @@
     <p><span class="fn-label">A note on field knowledge.</span> The map is a starting point for conversation, not an answer. Where it disagrees with what EBI field teams know on the ground, the disagreement itself is the most useful finding &mdash; it points either to a data gap or to a ground condition the data cannot see. Both improve the method.</p>
   </aside>
 
-  <section class="findings-strip" id="insights">
+  <section class="findings-strip" id="insights" aria-label="Scale of the problem across the three states">
     <div class="finding-cell">
+      <p class="cell-eyebrow">Conflict</p>
       <p class="cell-stat" id="cell-conflict">,</p>
-      <p class="cell-lbl">Political violence events recorded across BAY since 2020 (ACLED).</p>
+      <p class="cell-lbl">Political violence events recorded across BAY since 2020 <span class="cell-src">ACLED</span></p>
     </div>
     <div class="finding-cell">
+      <p class="cell-eyebrow">Displacement</p>
       <p class="cell-stat" id="cell-idp">,</p>
-      <p class="cell-lbl">Displaced individuals across the three states (IOM DTM, Oct 2025).</p>
+      <p class="cell-lbl">Displaced individuals across the three states <span class="cell-src">IOM DTM, Oct 2025</span></p>
     </div>
     <div class="finding-cell">
+      <p class="cell-eyebrow">Education need</p>
       <p class="cell-stat" id="cell-pin">,</p>
-      <p class="cell-lbl">Education sector PiN across BAY (OCHA JIAF, 2026 HNO).</p>
+      <p class="cell-lbl">Education sector people in need across BAY <span class="cell-src">OCHA JIAF, 2026 HNO</span></p>
     </div>
   </section>
 
   <section class="caption">
-    <p><strong>How to read this map.</strong> Each LGA is scored on four indicators: recorded political violence events since 2020, current displaced population, the OCHA Education Cluster severity score for 2026, and the share of school age children who live more than 5 km from a working school. The four indicators are combined into one number; the top third are red, the middle third orange, the bottom third yellow.</p>
+    <h2 class="caption-h">How to read this map</h2>
+    <p>Each LGA is scored on four indicators: recorded political violence events since 2020, current displaced population, the OCHA Education Cluster severity score for 2026, and the share of school age children who live more than 5 km from a working school. The four indicators are combined into one number; the top third are <span class="ink-tag tag-hi">red</span>, the middle third <span class="ink-tag tag-med">orange</span>, the bottom third <span class="ink-tag tag-lo">yellow</span>.</p>
     <p class="method-note">Method: unweighted mean of four min max normalised indicators per LGA, tercile classified across all 65 LGAs. The OCHA JIAF Education layer replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state wide data ceiling. See <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a> for the full story.</p>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-text">
+      <p class="cta-eyebrow">Inspect the evidence</p>
+      <p class="cta-lead">Every figure on this page is reproducible from raw open data. The pipeline, scoring rules, AI disclosure and source READMEs are public.</p>
+    </div>
+    <a class="cta-btn" href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-" target="_blank" rel="noopener">
+      View repository
+      <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 8h8.4L8.7 5.3l1-1L13.7 8l-4 3.7-1-1L11.4 9H3z"/></svg>
+    </a>
   </section>
 
   <footer class="brief-foot">
     <p class="foot-sources"><strong>Sources:</strong> ACLED political violence events (Apr 2026); IOM DTM Round 50 (Oct 2025); OCHA JIAF Nigeria 2026 Education sector PiN and Severity; OCHA Nigeria COD-AB; UNFPA / NPC population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026); iMMAP / Education Sector school list (Jun 2019, popup context only).</p>
-    <p class="foot-repo"><a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-" target="_blank" rel="noopener">View raw data, scripts, method and AI disclosure on GitHub</a></p>
     <p class="foot-disclaimer">Demonstration only. North East Nigeria is the reference case used to validate the method. The implementation country will be agreed with the contracting authority. Field validation is required before any planning decision.</p>
   </footer>
 </main>
