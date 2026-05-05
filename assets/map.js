@@ -85,6 +85,43 @@ function buildLegend() {
   `;
 }
 
+// Three permanent map callouts that force the conclusion without
+// requiring the viewer to click. Coordinates are approximate cluster
+// anchors over LGA polygons (chosen to avoid covering the polygon fill).
+function addCallouts(map) {
+  const callouts = [
+    {
+      latlng: [11.65, 13.55],
+      direction: "right",
+      html: `<strong>Southern Borno belt</strong><br>10+ high-priority LGAs cluster here<br><span class="co-sub">Bama · Gwoza · Damboa · Konduga</span>`,
+    },
+    {
+      latlng: [13.05, 12.35],
+      direction: "top",
+      html: `<strong>Northern frontier corridor</strong><br>5 high-priority LGAs along the Lake Chad / Yobe border<br><span class="co-sub">Monguno · Mobbar · Abadam · Geidam</span>`,
+    },
+    {
+      latlng: [10.85, 13.40],
+      direction: "right",
+      html: `<strong>Northern Adamawa</strong><br>4 LGAs reach high priority<br><span class="co-sub">JIAF 2026 confirms severe education stress</span>`,
+    },
+  ];
+  callouts.forEach(c => {
+    L.marker(c.latlng, {
+      opacity: 0,
+      interactive: false,
+      keyboard: false,
+    })
+      .addTo(map)
+      .bindTooltip(c.html, {
+        permanent: true,
+        direction: c.direction,
+        className: "map-callout",
+        offset: [0, 0],
+      });
+  });
+}
+
 async function load() {
   const [polys, states, caps, insights] = await Promise.all([
     fetch("assets/data.geojson").then(r => r.json()),
@@ -104,6 +141,8 @@ async function load() {
       L.circleMarker(latlng, { radius: 4, color: "#000", weight: 1, fillColor: "#fff", fillOpacity: 1 })
         .bindTooltip(f.properties.name || "", { permanent: true, direction: "right", offset: [6, 0], className: "cap-label" }),
   }).addTo(map);
+
+  addCallouts(map);
 
   map.fitBounds(lgaLayer.getBounds(), { padding: [10, 10] });
 

@@ -298,6 +298,69 @@ main {
   border-left: 4px solid var(--primary);
   box-shadow: var(--shadow-sm);
 }
+.caption .caption-method {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  font-size: 12.5px;
+  color: var(--gray-500);
+}
+
+/* ---------- Headline finding banner (above the map) ---------- */
+.finding {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+  border: 1px solid rgba(234,115,23,.35);
+  border-left: 5px solid var(--accent);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 0 0 22px;
+  box-shadow: var(--shadow-md);
+}
+.finding-eyebrow {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+.finding-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--gray-900);
+}
+.finding-text em {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--gray-500);
+}
+.f-borno   { color: var(--hi);          font-weight: 700; }
+.f-adamawa { color: var(--accent-dark); font-weight: 700; }
+.f-yobe    { color: #b45309;            font-weight: 700; }
+
+/* ---------- Permanent map callouts ---------- */
+.map-callout {
+  background: rgba(255,255,255,0.97);
+  border: 1px solid var(--gray-300);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--gray-900);
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  white-space: normal;
+  max-width: 220px;
+  font-weight: 500;
+}
+.map-callout strong { color: var(--accent-dark); font-size: 12.5px; }
+.map-callout .co-sub { color: var(--gray-500); font-size: 11px; }
+.map-callout::before { border-right-color: var(--accent) !important; }
+.leaflet-tooltip.map-callout { pointer-events: none; }
 
 /* ---------- Sources / footer ---------- */
 .src {

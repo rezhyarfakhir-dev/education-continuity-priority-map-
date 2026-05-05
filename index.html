@@ -12,8 +12,8 @@
 <header class="hero">
   <div class="hero-inner">
     <span class="eyebrow">Open-data method · Reference case</span>
-    <h1>Education continuity priority map</h1>
-    <p class="sub">A transferable open-data method for prioritising areas at risk of education disruption in conflict-affected regions.</p>
+    <h1>22 LGAs in North East Nigeria should be field-validated first for education response.</h1>
+    <p class="sub"><strong>Areas in red combine recent conflict, mass displacement, severe education-sector stress, and limited access to functioning schools.</strong> These are the places to look first. The same method can be re-pointed to any country where comparable open data exists.</p>
 
     <div class="kpis">
       <div class="kpi">
@@ -43,6 +43,11 @@
 </div>
 
 <main>
+  <section class="finding">
+    <p class="finding-eyebrow">Headline finding</p>
+    <p class="finding-text"><strong>22 of 65 BAY LGAs score in the highest priority class</strong> — <span class="f-borno">15 in Borno</span>, <span class="f-adamawa">4 in Adamawa</span>, <span class="f-yobe">3 in Yobe</span>. The top five (Bama, Gwoza, Damboa, Monguno, Geidam) score on every indicator simultaneously. <em>Click any LGA on the map below to see the four numbers driving its score.</em></p>
+  </section>
+
   <section class="map-wrap">
     <div id="map" role="region" aria-label="Choropleth map of LGA-level priority classes"></div>
     <div class="legend" id="legend"></div>
@@ -64,7 +69,7 @@
   </section>
 
   <section class="caption">
-    <p>Composite priority score = unweighted mean of four min-max-normalised indicators per LGA: ACLED political-violence events (2020-2026), IOM DTM Round 50 IDP individuals, OCHA JIAF 2026 Education sector severity (1-5), and the inverse of the HeiGIT 5 km school-age accessibility share. LGAs are tercile-classified into high (red), medium (orange) and low (yellow). The OCHA JIAF Education layer is the agreed 2026 humanitarian community estimate and replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state-wide data ceiling — see <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a>.</p>
+    <p><strong>How to read this map.</strong> Each LGA is scored on four things: (1) how many recorded political-violence events have occurred there since 2020, (2) how many displaced people are currently living there, (3) how severely the OCHA Education Cluster rates the education situation for 2026, and (4) how many school-age children live more than 5 km from a working school. The scores are combined into one number; LGAs in the top third are red, the middle third orange, the bottom third yellow. <span class="caption-method">Method detail: unweighted mean of four min-max-normalised indicators per LGA, tercile-classified. The OCHA JIAF Education layer replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state-wide data ceiling — see <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a>.</span></p>
   </section>
 
   <footer class="src">
