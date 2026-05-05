@@ -18,18 +18,18 @@
     <div class="kpis">
       <div class="kpi">
         <span class="kpi-num">4,517</span>
-        <span class="kpi-lbl">Political-violence events since 2020</span>
+        <span class="kpi-lbl">Political-violence events since 2020 (ACLED)</span>
       </div>
       <div class="kpi">
         <span class="kpi-num">4.3M</span>
-        <span class="kpi-lbl">Displaced individuals (DTM R50)</span>
+        <span class="kpi-lbl">Displaced individuals (IOM DTM R50)</span>
       </div>
       <div class="kpi">
         <span class="kpi-num">65</span>
-        <span class="kpi-lbl">LGAs across Borno, Adamawa, Yobe</span>
+        <span class="kpi-lbl">LGAs scored across Borno, Adamawa, Yobe</span>
       </div>
       <div class="kpi kpi-accent">
-        <span class="kpi-num">15</span>
+        <span class="kpi-num" id="kpi-high-num">—</span>
         <span class="kpi-lbl">LGAs ranked highest priority</span>
       </div>
     </div>
@@ -58,17 +58,17 @@
       <p id="insight-displaced-t">Loading…</p>
     </article>
     <article>
-      <h2 id="insight-validation-h">Adamawa needs field validation</h2>
+      <h2 id="insight-validation-h">All 65 LGAs scored with JIAF 2026</h2>
       <p id="insight-validation-t">Loading…</p>
     </article>
   </section>
 
   <section class="caption">
-    <p>Composite priority score = unweighted mean of four min-max-normalised indicators per LGA: ACLED political-violence events (2020-2026), IOM DTM Round 50 IDP individuals, percentage of schools listed as closed in the iMMAP 2019 school list, and the inverse of the HeiGIT 5 km school-age accessibility share. LGAs are tercile-classified into high (red), medium (orange) and low (yellow). The 21 Adamawa LGAs are shown as <em>validation needed</em> because the iMMAP source records 0 closed schools in Adamawa, which is a data ceiling rather than a finding.</p>
+    <p>Composite priority score = unweighted mean of four min-max-normalised indicators per LGA: ACLED political-violence events (2020-2026), IOM DTM Round 50 IDP individuals, OCHA JIAF 2026 Education sector severity (1-5), and the inverse of the HeiGIT 5 km school-age accessibility share. LGAs are tercile-classified into high (red), medium (orange) and low (yellow). The OCHA JIAF Education layer is the agreed 2026 humanitarian community estimate and replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state-wide data ceiling — see <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a>.</p>
   </section>
 
   <footer class="src">
-    <p><strong>Sources:</strong> ACLED (Apr 2026, CC BY-NC-SA 4.0); IOM DTM Round 50 (Oct 2025); iMMAP / Education Sector school list (Jun 2019); OCHA Nigeria COD-AB (current); UNFPA / NPC Nigeria population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026).</p>
+    <p><strong>Sources:</strong> ACLED political-violence events (Apr 2026, CC BY-NC-SA 4.0); IOM DTM Round 50 (Oct 2025); <strong>OCHA JIAF Nigeria 2026 — Education sector PiN &amp; Severity</strong> (2026 HNO); iMMAP / Education Sector school list (Jun 2019, context only); OCHA Nigeria COD-AB (current); UNFPA / NPC Nigeria population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026).</p>
     <p><strong>Repository:</strong> <a class="btn" href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-" target="_blank" rel="noopener">View on GitHub →</a> raw data, cleaning scripts, method notes and AI disclosure.</p>
   </footer>
 </main>

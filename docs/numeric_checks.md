@@ -1,7 +1,9 @@
 # Numeric checks
 
-The pipeline contains four hard assertions. Any change in the upstream
-data that breaks one of them surfaces immediately on the next run.
+The pipeline contains hard assertions across `05_clean_boundaries.py`,
+`03_clean_schools.py`, `08_clean_education_jiaf.py`, and
+`06_compute_scores.py`. Any change in the upstream data that breaks one
+of them surfaces immediately on the next run.
 
 ## 1. BAY LGA count
 
@@ -51,7 +53,7 @@ The scored set excludes Adamawa (21 LGAs) and contains BO+YO = 44 LGAs.
 assert len(ad_out) == 21
 ```
 
-## 5. Adamawa data ceiling
+## 5. Adamawa data ceiling (kept as a regression detector)
 
 `scripts/03_clean_schools.py`:
 
@@ -59,9 +61,39 @@ assert len(ad_out) == 21
 assert ad_closed == 0, "expected 0 closed schools in Adamawa (data ceiling)"
 ```
 
-This is the assertion that *fires the validation_needed branch*. If iMMAP
+The assertion is preserved even though iMMAP no longer drives the
+composite — it documents the historical reason JIAF was added. If iMMAP
 ever publishes a refreshed school list with non-zero closures in Adamawa,
-this assertion will fail and the script must be re-evaluated.
+this assertion fails and the pipeline is forced into manual review.
+
+## 6. JIAF BAY coverage (the score-driving indicator)
+
+`scripts/08_clean_education_jiaf.py`:
+
+```python
+assert len(df) == 65, f"expected 65 BAY LGAs, got {len(df)}"
+assert df["education_pin"].isna().sum() == 0, "JIAF Education PiN has nulls in BAY"
+assert df["education_severity"].isna().sum() == 0, "JIAF Education severity has nulls in BAY"
+assert counts.get("Borno") == 27
+assert counts.get("Adamawa") == 21
+assert counts.get("Yobe") == 17
+```
+
+If OCHA restructures the JIAF workbook (sheet rename, column rename) or
+if the BAY scope changes in a future HNO, one of these fires.
+
+## 7. Composite completeness after JIAF swap
+
+`scripts/06_compute_scores.py`:
+
+```python
+assert df["education_severity_score_norm"].isna().sum() == 0
+assert df["composite_score"].isna().sum() == 0
+```
+
+Guarantees every one of the 65 LGAs has a classifiable composite score.
+The "validation needed" branch from the prior pipeline is therefore
+structurally impossible to reach.
 
 ## ACLED sheet name
 

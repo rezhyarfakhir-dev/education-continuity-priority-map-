@@ -1,0 +1,66 @@
+pcode,lga_name,state,education_pin,education_severity,education_severity_score_norm
+NG002001,Demsa,Adamawa,18581,3.0,0.5
+NG002002,Fufore,Adamawa,40636,3.0,0.5
+NG002003,Ganye,Adamawa,27495,2.0,0.0
+NG002004,Gombi,Adamawa,14100,2.0,0.0
+NG002005,Girei,Adamawa,14642,3.0,0.5
+NG002006,Guyuk,Adamawa,14882,2.0,0.0
+NG002007,Hong,Adamawa,18883,2.0,0.0
+NG002008,Jada,Adamawa,20809,2.0,0.0
+NG002009,Lamurde,Adamawa,14017,3.0,0.5
+NG002010,Madagali,Adamawa,21431,3.0,0.5
+NG002011,Maiha,Adamawa,8377,2.0,0.0
+NG002012,Mayo-Belwa,Adamawa,19942,2.0,0.0
+NG002013,Michika,Adamawa,22304,3.0,0.5
+NG002014,Mubi North,Adamawa,25750,2.0,0.0
+NG002015,Mubi South,Adamawa,16309,3.0,0.5
+NG002016,Numan,Adamawa,13728,2.0,0.0
+NG002017,Shelleng,Adamawa,22741,3.0,0.5
+NG002018,Song,Adamawa,26859,2.0,0.0
+NG002019,Toungo,Adamawa,8943,2.0,0.0
+NG002020,Yola North,Adamawa,20978,2.0,0.0
+NG002021,Yola South,Adamawa,52892,3.0,0.5
+NG008001,Abadam,Borno,19532,3.0,0.5
+NG008002,Askira/Uba,Borno,33812,2.0,0.0
+NG008003,Bama,Borno,33720,4.0,1.0
+NG008004,Bayo,Borno,34314,2.0,0.0
+NG008005,Biu,Borno,26474,2.0,0.0
+NG008006,Chibok,Borno,23771,3.0,0.5
+NG008007,Damboa,Borno,28764,4.0,1.0
+NG008008,Dikwa,Borno,24297,3.0,0.5
+NG008009,Gubio,Borno,31909,2.0,0.0
+NG008010,Guzamala,Borno,17831,3.0,0.5
+NG008011,Gwoza,Borno,33814,3.0,0.5
+NG008012,Hawul,Borno,33161,2.0,0.0
+NG008013,Jere,Borno,89778,3.0,0.5
+NG008014,Kaga,Borno,23388,2.0,0.0
+NG008015,Kala/Balge,Borno,15163,4.0,1.0
+NG008016,Konduga,Borno,33905,3.0,0.5
+NG008017,Kukawa,Borno,20201,3.0,0.5
+NG008018,Kwaya Kusar,Borno,25634,2.0,0.0
+NG008019,Mafa,Borno,23236,3.0,0.5
+NG008020,Magumeri,Borno,29158,2.0,0.0
+NG008021,Maiduguri,Borno,106236,4.0,1.0
+NG008022,Marte,Borno,14620,3.0,0.5
+NG008023,Mobbar,Borno,33029,3.0,0.5
+NG008024,Monguno,Borno,31201,4.0,1.0
+NG008025,Ngala,Borno,30849,4.0,1.0
+NG008026,Nganzai,Borno,20411,3.0,0.5
+NG008027,Shani,Borno,37606,2.0,0.0
+NG036001,Bade,Yobe,12474,2.0,0.0
+NG036002,Bursari,Yobe,25788,3.0,0.5
+NG036003,Damaturu,Yobe,16381,2.0,0.0
+NG036004,Fika,Yobe,11111,3.0,0.5
+NG036005,Fune,Yobe,10543,2.0,0.0
+NG036006,Geidam,Yobe,30163,4.0,1.0
+NG036007,Gujba,Yobe,16869,3.0,0.5
+NG036008,Gulani,Yobe,35911,4.0,1.0
+NG036009,Jakusko,Yobe,30022,3.0,0.5
+NG036010,Karasuwa,Yobe,19474,2.0,0.0
+NG036011,Machina,Yobe,10233,2.0,0.0
+NG036012,Nangere,Yobe,25632,2.0,0.0
+NG036013,Nguru,Yobe,11578,2.0,0.0
+NG036014,Potiskum,Yobe,11853,2.0,0.0
+NG036015,Tarmua,Yobe,16344,2.0,0.0
+NG036016,Yunusari,Yobe,32316,2.0,0.0
+NG036017,Yusufari,Yobe,12000,2.0,0.0

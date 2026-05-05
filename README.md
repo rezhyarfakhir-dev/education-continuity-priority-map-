@@ -13,16 +13,19 @@ indicators:
 
 1. ACLED political-violence events, 2020-2026
 2. IOM DTM Round 50 displaced individuals
-3. Percentage of schools listed as closed (iMMAP 2019)
+3. **OCHA JIAF 2026 Education sector severity (1-5)**
 4. Inverse of school-age population within 5 km of an education facility (HeiGIT 2026)
 
 Each indicator is min-max-normalised to `[0, 1]`. The mean of the four is
 tercile-classified into **high / medium / lower** priority and rendered as a
 choropleth on a Leaflet map with full per-LGA detail in the popups.
 
-The 21 LGAs of Adamawa are flagged **validation needed** rather than
-classified, because the iMMAP 2019 source records 0 closed schools state-wide
-(see `docs/adamawa_decision.md`).
+All 65 LGAs (including the 21 in Adamawa) are scored. The OCHA JIAF
+Education layer is the official 2026 humanitarian community estimate and
+resolves a state-wide data ceiling that affected an earlier iMMAP 2019
+school list (0 closures recorded across Adamawa). The iMMAP figures are
+still carried through to the popup as context but no longer drive
+classification — see `docs/adamawa_decision.md`.
 
 ## Why North East Nigeria
 
@@ -73,7 +76,7 @@ coding tools used as a pair-programming aid. Every numeric figure on the
 published map and in the documentation has been independently verified by
 the author (a human) by running the pipeline locally against the raw source
 files and inspecting the cleaned outputs row by row. Each upstream source —
-ACLED, IOM DTM, iMMAP, OCHA, UNFPA, HeiGIT — was opened and read directly;
+ACLED, IOM DTM, OCHA JIAF, iMMAP, OCHA, UNFPA, HeiGIT — was opened and read directly;
 no figure was accepted from the model without being reproduced from the
 underlying file. The Adamawa data-ceiling issue was identified by the
 author during that verification, not assumed. All design choices, the

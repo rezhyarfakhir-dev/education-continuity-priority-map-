@@ -6,54 +6,68 @@
     "Borno": 1555673,
     "Yobe": 1039435
   },
-  "scored_lgas": 44,
-  "validation_needed_lgas": 21,
+  "scored_lgas": 65,
+  "validation_needed_lgas": 0,
   "priority_counts": {
-    "high": 15,
-    "medium": 14,
-    "low": 15,
-    "validation_needed": 21
+    "high": 22,
+    "medium": 21,
+    "low": 22
   },
   "high_priority_lgas": [
     {
-      "lga_name": "Gwoza",
-      "state": "Borno",
-      "composite_score": 0.8987791755325981
-    },
-    {
       "lga_name": "Bama",
       "state": "Borno",
-      "composite_score": 0.8710014263995051
+      "composite_score": 0.9222834776815564
+    },
+    {
+      "lga_name": "Gwoza",
+      "state": "Borno",
+      "composite_score": 0.8357791755325981
     },
     {
       "lga_name": "Damboa",
       "state": "Borno",
-      "composite_score": 0.7532321550653054
-    },
-    {
-      "lga_name": "Konduga",
-      "state": "Borno",
-      "composite_score": 0.7215073075943541
+      "composite_score": 0.808575666515687
     },
     {
       "lga_name": "Monguno",
       "state": "Borno",
-      "composite_score": 0.710581755449547
+      "composite_score": 0.7605817554495471
+    },
+    {
+      "lga_name": "Geidam",
+      "state": "Yobe",
+      "composite_score": 0.6974951445697919
+    },
+    {
+      "lga_name": "Konduga",
+      "state": "Borno",
+      "composite_score": 0.6535725249856584
     },
     {
       "lga_name": "Mobbar",
       "state": "Borno",
-      "composite_score": 0.6756772231575024
+      "composite_score": 0.6062327787130579
+    },
+    {
+      "lga_name": "Ngala",
+      "state": "Borno",
+      "composite_score": 0.5769820652878352
+    },
+    {
+      "lga_name": "Gulani",
+      "state": "Yobe",
+      "composite_score": 0.5755349739790068
     },
     {
       "lga_name": "Dikwa",
       "state": "Borno",
-      "composite_score": 0.6545709047938839
+      "composite_score": 0.5684597936827728
     },
     {
-      "lga_name": "Abadam",
-      "state": "Borno",
-      "composite_score": 0.601417219356656
+      "lga_name": "Gujba",
+      "state": "Yobe",
+      "composite_score": 0.5523872990634292
     },
     {
       "lga_name": "Kala/Balge",
@@ -61,43 +75,81 @@
       "composite_score": 0.5504347132008717
     },
     {
-      "lga_name": "Magumeri",
-      "state": "Borno",
-      "composite_score": 0.549944836018894
+      "lga_name": "Michika",
+      "state": "Adamawa",
+      "composite_score": 0.5219940433760801
     },
     {
-      "lga_name": "Gujba",
-      "state": "Yobe",
-      "composite_score": 0.5461372990634292
+      "lga_name": "Maiduguri",
+      "state": "Borno",
+      "composite_score": 0.511009253051115
     },
     {
-      "lga_name": "Marte",
+      "lga_name": "Abadam",
       "state": "Borno",
-      "composite_score": 0.5233928444080648
+      "composite_score": 0.476417219356656
     },
     {
-      "lga_name": "Kaga",
-      "state": "Borno",
-      "composite_score": 0.5219284685372196
+      "lga_name": "Madagali",
+      "state": "Adamawa",
+      "composite_score": 0.4710191154323402
     },
     {
-      "lga_name": "Ngala",
+      "lga_name": "Jere",
       "state": "Borno",
-      "composite_score": 0.5128795011852711
+      "composite_score": 0.4656015564305472
     },
     {
-      "lga_name": "Gubio",
+      "lga_name": "Mubi South",
+      "state": "Adamawa",
+      "composite_score": 0.4650118594653786
+    },
+    {
+      "lga_name": "Askira/Uba",
       "state": "Borno",
-      "composite_score": 0.502680269176717
+      "composite_score": 0.4460439061846084
+    },
+    {
+      "lga_name": "Lamurde",
+      "state": "Adamawa",
+      "composite_score": 0.4223162471975414
+    },
+    {
+      "lga_name": "Nganzai",
+      "state": "Borno",
+      "composite_score": 0.4199897750511247
+    },
+    {
+      "lga_name": "Mafa",
+      "state": "Borno",
+      "composite_score": 0.412938052710722
     }
   ],
   "borno_share_of_recent_conflict_pct": 83.9,
   "bay_acled_events_2020_2026": 4517,
   "bay_idp_individuals_dtm_r50": 4276700,
+  "bay_education_pin_jiaf_2026": 1648805,
+  "education_severity_by_state": {
+    "Adamawa": [
+      2,
+      3
+    ],
+    "Borno": [
+      2,
+      3,
+      4
+    ],
+    "Yobe": [
+      2,
+      3,
+      4
+    ]
+  },
   "data_vintages": {
     "ACLED": "Jan 2020 - Apr 2026",
     "DTM": "Round 50, Oct 2025",
-    "iMMAP school list": "Jun 2019",
+    "OCHA JIAF (Education sector PiN + Severity)": "2026 HNO",
+    "iMMAP school list (context only)": "Jun 2019",
     "OCHA boundaries": "current",
     "UNFPA population": "2022 projection",
     "HeiGIT accessibility": "Feb 2026"

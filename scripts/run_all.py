@@ -15,6 +15,7 @@ ORDER = [
     "02_clean_displacement.py",
     "03_clean_schools.py",
     "04_clean_access.py",
+    "08_clean_education_jiaf.py",
     "06_compute_scores.py",
     "07_export_leaflet_data.py",
 ]

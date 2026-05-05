@@ -57,9 +57,10 @@ function popupHtml(p) {
       <tr><td class="k">ACLED events 2020-26</td><td class="v">${fmt(p.events)}</td></tr>
       <tr><td class="k">Fatalities</td><td class="v">${fmt(p.fatalities)}</td></tr>
       <tr><td class="k">IDP individuals (DTM R50)</td><td class="v">${fmt(p.idp_individuals)}</td></tr>
-      <tr><td class="k">Schools listed (iMMAP 2019)</td><td class="v">${fmt(p.total_schools)}</td></tr>
-      <tr><td class="k">Schools closed</td><td class="v">${fmt(p.closed_schools)} (${fmtPct(p.pct_closed)})</td></tr>
+      <tr><td class="k">Education PiN (JIAF 2026)</td><td class="v">${fmt(p.education_pin)}</td></tr>
+      <tr><td class="k">Education severity (JIAF 2026)</td><td class="v">${p.education_severity || "—"}${p.education_severity_label ? " · " + p.education_severity_label : ""}</td></tr>
       <tr><td class="k">School-age within 5km of school</td><td class="v">${fmtPct(p.school_age_within_5km_pct)}</td></tr>
+      <tr><td class="k">Schools listed / closed (iMMAP 2019, context)</td><td class="v">${fmt(p.total_schools)} / ${fmt(p.closed_schools)}</td></tr>
       <tr><td class="k">Composite score</td><td class="v">${p.composite_score === null ? "—" : Number(p.composite_score).toFixed(2)}</td></tr>
     </table>
     ${reason}
@@ -81,7 +82,6 @@ function buildLegend() {
     <div><span class="swatch sw-hi"></span> High priority</div>
     <div><span class="swatch sw-med"></span> Medium priority</div>
     <div><span class="swatch sw-lo"></span> Lower priority</div>
-    <div><span class="swatch sw-val"></span> Validation needed</div>
   `;
 }
 
@@ -112,6 +112,8 @@ async function load() {
 }
 
 function renderInsights(d) {
+  const kpiEl = document.getElementById("kpi-high-num");
+  if (kpiEl) kpiEl.textContent = d.priority_counts.high;
   document.getElementById("insight-conflict-t").textContent =
     `Borno accounts for ${d.borno_share_of_recent_conflict_pct}% of the ${fmt(d.bay_acled_events_2020_2026)} ACLED political-violence events recorded across BAY since 2020. Conflict exposure is geographically concentrated, which lets a small number of LGAs be prioritised.`;
 
@@ -119,7 +121,7 @@ function renderInsights(d) {
     `IOM DTM Round 50 (Oct 2025) records ${fmt(d.bay_idp_individuals_dtm_r50)} displaced individuals across ${d.total_lgas_bay} BAY LGAs. The school-age population (5-14) of the three states is ${fmt(d.total_school_age_5_14)}.`;
 
   document.getElementById("insight-validation-t").textContent =
-    `${d.priority_counts.validation_needed} Adamawa LGAs are flagged "validation needed" because the iMMAP 2019 school list records 0 closed schools state-wide — a data ceiling, not a finding. Field validation must precede classification.`;
+    `All 65 BAY LGAs (including 21 in Adamawa) are scored using the OCHA JIAF 2026 Education sector severity layer, which the Education Cluster agrees as the official 2026 estimate. Total Education sector PiN across BAY: ${fmt(d.bay_education_pin_jiaf_2026)} individuals. The earlier iMMAP 2019 school list undercounted Adamawa (0 closures recorded state-wide); JIAF 2026 resolves that data ceiling.`;
 }
 
 load().catch(err => {
