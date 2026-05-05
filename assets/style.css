@@ -1,0 +1,130 @@
+:root {
+  --bg: #fafaf7;
+  --fg: #1a1a1a;
+  --muted: #555;
+  --rule: #d8d8d2;
+  --accent: #1f4ea8;
+  --hi: #c0392b;
+  --med: #e67e22;
+  --lo: #f4d03f;
+  --val: #888;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.site-head {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 24px 8px;
+}
+.site-head h1 {
+  font-size: 28px;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.site-head .sub {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.site-head .takeaway {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent);
+  background: #fff;
+}
+.site-head .notice {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 36px;
+}
+.map-wrap {
+  position: relative;
+  margin: 18px 0 24px;
+}
+#map {
+  height: 540px;
+  border: 1px solid var(--rule);
+  background: #eee;
+}
+.legend {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid var(--rule);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.legend .swatch {
+  display: inline-block;
+  width: 14px; height: 14px;
+  vertical-align: middle;
+  margin-right: 6px;
+  border: 1px solid #aaa;
+}
+.legend .sw-hi { background: var(--hi); }
+.legend .sw-med { background: var(--med); }
+.legend .sw-lo { background: var(--lo); }
+.legend .sw-val { background: var(--val); }
+.legend .title { font-weight: 600; margin-bottom: 4px; display: block; }
+
+.insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 8px 0 18px;
+}
+.insights article {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+}
+.insights h2 {
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+.insights p { margin: 0; font-size: 14px; }
+.caption p { font-size: 14px; color: var(--muted); }
+.src {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--muted);
+}
+.src a { color: var(--accent); }
+
+/* Leaflet popup overrides */
+.leaflet-popup-content { font-size: 13px; line-height: 1.45; }
+.leaflet-popup-content h3 { margin: 0 0 4px; font-size: 14px; }
+.leaflet-popup-content table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.leaflet-popup-content td { padding: 2px 4px; border-top: 1px dotted #ddd; }
+.leaflet-popup-content td.k { color: var(--muted); }
+.leaflet-popup-content td.v { text-align: right; font-variant-numeric: tabular-nums; }
+.pop-class { display: inline-block; padding: 1px 8px; font-size: 11px; font-weight: 600; color: #fff; }
+.pop-hi { background: var(--hi); }
+.pop-med { background: var(--med); }
+.pop-lo { background: var(--lo); color: #1a1a1a; }
+.pop-val { background: var(--val); }
+
+@media (max-width: 760px) {
+  .insights { grid-template-columns: 1fr; }
+  #map { height: 420px; }
+  .site-head h1 { font-size: 22px; }
+}

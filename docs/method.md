@@ -1,0 +1,77 @@
+# Method
+
+## Unit of analysis
+
+The Local Government Area (LGA, OCHA admin level 2). 65 LGAs across Borno
+(27), Adamawa (21) and Yobe (17). The choice matches the operational unit
+used by the Education Cluster, the Education Sector working group in North
+East Nigeria, OCHA INFORM Severity, and ACAPS humanitarian access scoring.
+
+## Indicators
+
+| # | Indicator | Source | Score direction |
+|---|-----------|--------|-----------------|
+| 1 | ACLED political-violence events 2020-2026, count per LGA | ACLED Apr 2026 | higher = more pressure |
+| 2 | IDP individuals per LGA | IOM DTM Round 50 (Oct 2025) | higher = more pressure |
+| 3 | % of schools listed as closed | iMMAP / Education Sector school list (Jun 2019) | higher = more pressure |
+| 4 | School-age population *not* within 5 km of an education facility | HeiGIT (Feb 2026) | higher = more pressure |
+
+Each indicator is min-max-normalised across the scored set:
+
+```
+score_norm_i = (x_i - min(x)) / (max(x) - min(x))
+```
+
+The composite score is the unweighted mean of the four normalised indicators.
+Equal weighting is used because there is no defensible empirical basis to
+weight one indicator over another at this stage; weights would be calibrated
+in country with the contracting authority before any operational use.
+
+## Classification
+
+The composite score is **tercile-classified** across the scored set into
+high / medium / lower priority. Choropleth colours: red / orange / yellow.
+
+The 21 LGAs of Adamawa are not scored. They are flagged
+**validation needed** (grey) and excluded from the tercile thresholds. See
+`adamawa_decision.md` for the reasoning.
+
+## Why these four indicators
+
+- **Recent conflict** drives both school closure and population movement.
+- **Current displacement** is the most direct proxy for which LGAs are
+  hosting school-age children whose education has been interrupted.
+- **School status** is the most direct possible measure of disruption when
+  available.
+- **Physical accessibility** captures whether a school exists within walking
+  distance, independent of conflict — chronic underprovision compounds
+  acute shocks.
+
+## What the score does *not* claim
+
+- It is not a ranking of need within an LGA — wards inside one LGA can vary
+  widely. This is acknowledged in the artifact caption.
+- It is not predictive — it summarises observed exposure across the
+  available data layers.
+- It is not weighted by validated outcome data (e.g. enrolment, learning
+  outcomes), which are not openly published at LGA level.
+
+## What changes when re-targeted
+
+Targeting the same pipeline at another country requires:
+
+1. Replace `data/raw/05_ocha_boundaries/` with the COD-AB for that country.
+2. Replace `data/raw/01_acled_conflict/` with an ACLED export for that country.
+3. Replace `data/raw/02_iom_dtm_displacement/` with the relevant DTM round.
+4. Replace `data/raw/03_immap_schools_2019/` with the local school list.
+5. Replace `data/raw/07_heigit_accessibility/` with the HeiGIT export for
+   that ISO3 code.
+6. Replace `data/raw/06_unfpa_population/` with the UNFPA / national
+   statistical office population file.
+7. Update the BAY filter list at the top of `05_clean_boundaries.py` and
+   the name-mapping dictionary in `04_clean_access.py` for the new geography.
+8. Re-run `scripts/run_all.py`.
+
+The four assertions in the pipeline (LGA count, BAY total population, BO+YO
+LGA count, Adamawa LGA count) are the country-specific integrity checks and
+must be updated for the new geography.

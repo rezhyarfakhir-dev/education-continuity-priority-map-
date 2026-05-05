@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Education Continuity Priority Map — North East Nigeria (reference case)</title>
+<meta name="description" content="A transferable open-data method for prioritising areas at risk of education disruption in conflict-affected regions. Demonstrated on North East Nigeria." />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="site-head">
+  <h1>Education continuity priority map</h1>
+  <p class="sub">A transferable open-data method for prioritising areas at risk of education disruption in conflict-affected regions.</p>
+  <p class="takeaway"><strong>Takeaway:</strong> 4,517 recorded political-violence events since 2020 and 4.3 million displaced individuals across 65 LGAs in Borno, Adamawa and Yobe. 15 LGAs rank highest priority for education continuity programming; 21 Adamawa LGAs require field validation before classification.</p>
+  <p class="notice"><strong>Demonstration only.</strong> North East Nigeria is the reference case used to validate the method. The same pipeline is intended to be applied to a programme country selected with the contracting authority.</p>
+</header>
+
+<main>
+  <section class="map-wrap">
+    <div id="map" role="region" aria-label="Choropleth map of LGA-level priority classes"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="insights" id="insights">
+    <article>
+      <h2 id="insight-conflict-h">Conflict concentrates in Borno</h2>
+      <p id="insight-conflict-t">Loading…</p>
+    </article>
+    <article>
+      <h2 id="insight-displaced-h">Displacement at scale</h2>
+      <p id="insight-displaced-t">Loading…</p>
+    </article>
+    <article>
+      <h2 id="insight-validation-h">Adamawa needs field validation</h2>
+      <p id="insight-validation-t">Loading…</p>
+    </article>
+  </section>
+
+  <section class="caption">
+    <p>Composite priority score = unweighted mean of four min-max-normalised indicators per LGA: ACLED political-violence events (2020-2026), IOM DTM Round 50 IDP individuals, percentage of schools listed as closed in the iMMAP 2019 school list, and the inverse of the HeiGIT 5 km school-age accessibility share. LGAs are tercile-classified into high (red), medium (orange) and low (yellow). The 21 Adamawa LGAs are shown as <em>validation needed</em> because the iMMAP source records 0 closed schools in Adamawa, which is a data ceiling rather than a finding.</p>
+  </section>
+
+  <footer class="src">
+    <p><strong>Sources:</strong> ACLED (Apr 2026, CC BY-NC-SA 4.0); IOM DTM Round 50 (Oct 2025); iMMAP / Education Sector school list (Jun 2019); OCHA Nigeria COD-AB (current); UNFPA / NPC Nigeria population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026).</p>
+    <p><strong>Repository:</strong> <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-">github.com/rezhyarfakhir-dev/education-continuity-priority-map-</a> &middot; raw data, cleaning scripts, method notes and AI disclosure.</p>
+  </footer>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/map.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+  "total_lgas_bay": 65,
+  "total_school_age_5_14": 3926751,
+  "school_age_by_state": {
+    "Adamawa": 1331643,
+    "Borno": 1555673,
+    "Yobe": 1039435
+  },
+  "scored_lgas": 44,
+  "validation_needed_lgas": 21,
+  "priority_counts": {
+    "high": 15,
+    "medium": 14,
+    "low": 15,
+    "validation_needed": 21
+  },
+  "high_priority_lgas": [
+    {
+      "lga_name": "Gwoza",
+      "state": "Borno",
+      "composite_score": 0.8987791755325981
+    },
+    {
+      "lga_name": "Bama",
+      "state": "Borno",
+      "composite_score": 0.8710014263995051
+    },
+    {
+      "lga_name": "Damboa",
+      "state": "Borno",
+      "composite_score": 0.7532321550653054
+    },
+    {
+      "lga_name": "Konduga",
+      "state": "Borno",
+      "composite_score": 0.7215073075943541
+    },
+    {
+      "lga_name": "Monguno",
+      "state": "Borno",
+      "composite_score": 0.710581755449547
+    },
+    {
+      "lga_name": "Mobbar",
+      "state": "Borno",
+      "composite_score": 0.6756772231575024
+    },
+    {
+      "lga_name": "Dikwa",
+      "state": "Borno",
+      "composite_score": 0.6545709047938839
+    },
+    {
+      "lga_name": "Abadam",
+      "state": "Borno",
+      "composite_score": 0.601417219356656
+    },
+    {
+      "lga_name": "Kala/Balge",
+      "state": "Borno",
+      "composite_score": 0.5504347132008717
+    },
+    {
+      "lga_name": "Magumeri",
+      "state": "Borno",
+      "composite_score": 0.549944836018894
+    },
+    {
+      "lga_name": "Gujba",
+      "state": "Yobe",
+      "composite_score": 0.5461372990634292
+    },
+    {
+      "lga_name": "Marte",
+      "state": "Borno",
+      "composite_score": 0.5233928444080648
+    },
+    {
+      "lga_name": "Kaga",
+      "state": "Borno",
+      "composite_score": 0.5219284685372196
+    },
+    {
+      "lga_name": "Ngala",
+      "state": "Borno",
+      "composite_score": 0.5128795011852711
+    },
+    {
+      "lga_name": "Gubio",
+      "state": "Borno",
+      "composite_score": 0.502680269176717
+    }
+  ],
+  "borno_share_of_recent_conflict_pct": 83.9,
+  "bay_acled_events_2020_2026": 4517,
+  "bay_idp_individuals_dtm_r50": 4276700,
+  "data_vintages": {
+    "ACLED": "Jan 2020 - Apr 2026",
+    "DTM": "Round 50, Oct 2025",
+    "iMMAP school list": "Jun 2019",
+    "OCHA boundaries": "current",
+    "UNFPA population": "2022 projection",
+    "HeiGIT accessibility": "Feb 2026"
+  }
+}
