@@ -104,38 +104,9 @@ function buildLegend() {
   `;
 }
 
-// Two permanent map callouts. The strategy doc allows two to four;
-// fewer is better. The inline finding line above the map already
-// names the Adamawa count, so the third callout was removed to
-// reduce visual noise.
-function addCallouts(map) {
-  const callouts = [
-    {
-      // Anchor sits east of Bama in the empty Cameroon area; tooltip
-      // floats further east so it never covers the southern Borno cluster.
-      latlng: [11.45, 14.20],
-      direction: "right",
-      html: `<strong>Southern Borno belt</strong>10 high priority LGAs cluster here<span class="co-sub">Bama, Gwoza, Damboa, Konduga</span>`,
-    },
-    {
-      // Anchor sits north of Yobe in the empty Niger area; tooltip floats
-      // further north so it stays clear of the frontier LGAs.
-      latlng: [13.80, 12.20],
-      direction: "top",
-      html: `<strong>Northern frontier corridor</strong>Lake Chad and Yobe border<span class="co-sub">Monguno, Mobbar, Abadam, Geidam</span>`,
-    },
-  ];
-  callouts.forEach(c => {
-    L.marker(c.latlng, { opacity: 0, interactive: false, keyboard: false })
-      .addTo(map)
-      .bindTooltip(c.html, {
-        permanent: true,
-        direction: c.direction,
-        className: "map-callout",
-        offset: [0, 0],
-      });
-  });
-}
+// Map annotations were moved out of the Leaflet canvas into the
+// page layout (.map-annotations in style.css) so they never
+// overlap polygons at any viewport width.
 
 async function load() {
   const [polys, states, caps, insights] = await Promise.all([
