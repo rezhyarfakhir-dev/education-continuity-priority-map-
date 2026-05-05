@@ -1,10 +1,15 @@
 // Education Continuity Priority Map - Leaflet renderer
 
+// Severity palette tuned to the brand (teal/orange/gray):
+//   high    = red       (semantic: highest risk)
+//   medium  = brand orange
+//   low     = amber
+//   validation_needed = gray
 const COLORS = {
-  high: "#c0392b",
-  medium: "#e67e22",
-  low: "#f4d03f",
-  validation_needed: "#888888",
+  high: "#b91c1c",
+  medium: "#ea7317",
+  low: "#fbbf24",
+  validation_needed: "#9ca3af",
 };
 const CLASS_LABEL = {
   high: "High priority",
