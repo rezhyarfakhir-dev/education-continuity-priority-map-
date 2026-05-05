@@ -165,16 +165,18 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   font-weight: 700;
   font-size: 14px;
   color: #fff;
+  border-right: 1px solid rgba(0,0,0,.18);
 }
+.chip-num:last-of-type { border-right: none; }
 .chip-lbl {
   display: inline-flex;
   align-items: center;
   padding: 6px 12px 6px 10px;
   color: rgba(255,255,255,.92);
 }
-.chip-borno   .chip-num { background: var(--map-hi); }
-.chip-adamawa .chip-num { background: var(--map-med); color: #2a1606; }
-.chip-yobe    .chip-num { background: var(--map-lo); color: #3a2a08; }
+.chip-num--hi  { background: var(--map-hi);  color: #fff; }
+.chip-num--med { background: var(--map-med); color: #2a1606; }
+.chip-num--lo  { background: var(--map-lo);  color: #3a2a08; }
 
 /* ============================================================
    Main column
