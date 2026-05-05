@@ -70,12 +70,17 @@ place.
 
 This repository was assembled with the assistance of large-language-model
 coding tools used as a pair-programming aid. Every numeric figure on the
-published map and in the documentation has been verified by running the
-pipeline locally against the raw source files. The Adamawa data-ceiling
-issue was identified during that verification, not assumed. All design
-choices, the demonstration framing, and the contents of the documentation
-were reviewed and approved by the author. No AI-generated text appears in
-the source citations or the licence notices.
+published map and in the documentation has been independently verified by
+the author (a human) by running the pipeline locally against the raw source
+files and inspecting the cleaned outputs row by row. Each upstream source —
+ACLED, IOM DTM, iMMAP, OCHA, UNFPA, HeiGIT — was opened and read directly;
+no figure was accepted from the model without being reproduced from the
+underlying file. The Adamawa data-ceiling issue was identified by the
+author during that verification, not assumed. All design choices, the
+demonstration framing, and the contents of the documentation were
+reviewed and approved by the author. No AI-generated text appears in the
+source citations or the licence notices. The author takes full
+responsibility for the contents of this repository.
 
 ## Licence
 
