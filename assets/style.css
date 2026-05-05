@@ -135,23 +135,46 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
 .finding-split {
   display: inline-flex;
   align-items: center;
-  gap: 4px 14px;
+  gap: 8px;
   flex-wrap: wrap;
-  color: rgba(255,255,255,.65);
-  font-size: 13.5px;
   margin-left: auto;
   padding-left: 12px;
 }
-.dot {
-  display: inline-block;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  margin-right: 5px;
-  vertical-align: 1px;
+.chip {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  font-size: 12.5px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: .01em;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+  transition: background .15s, border-color .15s, transform .12s;
 }
-.dot-borno   { background: var(--map-hi); }
-.dot-adamawa { background: var(--map-med); }
-.dot-yobe    { background: var(--map-lo); border: 1px solid rgba(255,255,255,.4); }
+.chip:hover { background: rgba(255,255,255,.10); transform: translateY(-1px); }
+.chip-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  padding: 6px 9px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+.chip-lbl {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px 6px 10px;
+  color: rgba(255,255,255,.92);
+}
+.chip-borno   .chip-num { background: var(--map-hi); }
+.chip-adamawa .chip-num { background: var(--map-med); color: #2a1606; }
+.chip-yobe    .chip-num { background: var(--map-lo); color: #3a2a08; }
 
 /* ============================================================
    Main column
@@ -553,9 +576,9 @@ a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-
   .brief-inner { padding: 40px 22px 28px; }
   .brief-head h1 { font-size: 30px; }
   .standfirst { font-size: 16.5px; }
-  .finding-line { gap: 8px 12px; }
+  .finding-line { gap: 10px 12px; }
   .finding-line #kpi-high-num { font-size: 26px; }
-  .finding-split { margin-left: 0; padding-left: 0; font-size: 12.5px; }
+  .finding-split { margin-left: 0; padding-left: 0; gap: 6px; font-size: 12.5px; }
   .findings-strip { grid-template-columns: 1fr; }
   .finding-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.10); }
   .finding-cell:last-child { border-bottom: none; }
