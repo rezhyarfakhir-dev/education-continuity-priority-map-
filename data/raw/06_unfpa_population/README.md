@@ -1,14 +1,14 @@
-# UNFPA — Nigeria Population by Age and Sex (2022)
+# UNFPA, Nigeria Population by Age and Sex (2022)
 
 **File:** `nga_admpop_2022.xlsx`
 **Source:** UNFPA / National Population Commission of Nigeria, via HDX
 **URL:** https://data.humdata.org/dataset/cod-ps-nga
 **Vintage:** 2022 projection (baseline 2006 census)
 **Licence:** Open
-**Coverage:** national, ADM0 + ADM1 (state-level only — there is no ADM2/LGA breakdown in this dataset).
+**Coverage:** national, ADM0 + ADM1 (state-level only, there is no ADM2/LGA breakdown in this dataset).
 
 ## Sheets used
-`nga_admpop_adm1_2022` (37 rows = 36 states + FCT) — we filter to BAY 3.
+`nga_admpop_adm1_2022` (37 rows = 36 states + FCT), we filter to BAY 3.
 
 ## Fields used
 `ADM1_EN, T_TL` (total population), `T_05_09`, `T_10_14`. We sum `T_05_09 + T_10_14` to get the school-age population (5-14).

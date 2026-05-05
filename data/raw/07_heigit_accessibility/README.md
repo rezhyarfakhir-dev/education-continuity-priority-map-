@@ -1,4 +1,4 @@
-# HeiGIT — Nigeria Education Accessibility (2026)
+# HeiGIT, Nigeria Education Accessibility (2026)
 
 **File:** `NGA_education_access_wide.csv`
 **Source:** HeiGIT (Heidelberg Institute for Geoinformation Technology), Global Healthcare/Education Access Indicators
@@ -10,7 +10,7 @@
 ## Schema
 `name, iso, id, country, admin_level, category, range_type, range, population, school_age_population, school_age_population_share, school_age_population_interval, school_age_population_interval_share, population_share, population_interval, population_interval_share`
 
-For each LGA, the dataset provides multiple rows — one per distance band (5km, 10km, 15km, 20km, 25km, 30km, 35km, 40km, 45km, 50km).
+For each LGA, the dataset provides multiple rows, one per distance band (5km, 10km, 15km, 20km, 25km, 30km, 35km, 40km, 45km, 50km).
 
 ## Field we use
 `school_age_population_share` at `range = 5000` (5km): the percentage of the LGA's school-age population that lives within 5km of an education facility.

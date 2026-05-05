@@ -37,12 +37,12 @@ function styleLGA(feature) {
 }
 
 function fmt(n) {
-  if (n === null || n === undefined || Number.isNaN(n)) return "—";
+  if (n === null || n === undefined || Number.isNaN(n)) return "n/a";
   if (typeof n === "number") return n.toLocaleString();
   return n;
 }
 function fmtPct(n) {
-  if (n === null || n === undefined || Number.isNaN(n)) return "—";
+  if (n === null || n === undefined || Number.isNaN(n)) return "n/a";
   return `${Number(n).toFixed(1)}%`;
 }
 
@@ -58,10 +58,10 @@ function popupHtml(p) {
       <tr><td class="k">Fatalities</td><td class="v">${fmt(p.fatalities)}</td></tr>
       <tr><td class="k">IDP individuals (DTM R50)</td><td class="v">${fmt(p.idp_individuals)}</td></tr>
       <tr><td class="k">Education PiN (JIAF 2026)</td><td class="v">${fmt(p.education_pin)}</td></tr>
-      <tr><td class="k">Education severity (JIAF 2026)</td><td class="v">${p.education_severity || "—"}${p.education_severity_label ? " · " + p.education_severity_label : ""}</td></tr>
+      <tr><td class="k">Education severity (JIAF 2026)</td><td class="v">${p.education_severity || "n/a"}${p.education_severity_label ? " · " + p.education_severity_label : ""}</td></tr>
       <tr><td class="k">School-age within 5km of school</td><td class="v">${fmtPct(p.school_age_within_5km_pct)}</td></tr>
       <tr><td class="k">Schools listed / closed (iMMAP 2019, context)</td><td class="v">${fmt(p.total_schools)} / ${fmt(p.closed_schools)}</td></tr>
-      <tr><td class="k">Composite score</td><td class="v">${p.composite_score === null ? "—" : Number(p.composite_score).toFixed(2)}</td></tr>
+      <tr><td class="k">Composite score</td><td class="v">${p.composite_score === null ? "n/a" : Number(p.composite_score).toFixed(2)}</td></tr>
     </table>
     ${reason}
   `;
@@ -160,7 +160,7 @@ function renderInsights(d) {
     `IOM DTM Round 50 (Oct 2025) records ${fmt(d.bay_idp_individuals_dtm_r50)} displaced individuals across ${d.total_lgas_bay} BAY LGAs. The school-age population (5-14) of the three states is ${fmt(d.total_school_age_5_14)}.`;
 
   document.getElementById("insight-validation-t").textContent =
-    `All 65 BAY LGAs (including 21 in Adamawa) are scored using the OCHA JIAF 2026 Education sector severity layer, which the Education Cluster agrees as the official 2026 estimate. Total Education sector PiN across BAY: ${fmt(d.bay_education_pin_jiaf_2026)} individuals. The earlier iMMAP 2019 school list undercounted Adamawa (0 closures recorded state-wide); JIAF 2026 resolves that data ceiling.`;
+    `All 65 BAY LGAs (including 21 in Adamawa) are scored using the OCHA JIAF 2026 Education sector severity layer, which the Education Cluster agrees as the official 2026 estimate. Total Education sector PiN across BAY: ${fmt(d.bay_education_pin_jiaf_2026)} individuals. The earlier iMMAP 2019 school list undercounted Adamawa (0 closures recorded state wide); JIAF 2026 resolves that data ceiling.`;
 }
 
 load().catch(err => {

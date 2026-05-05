@@ -1,4 +1,4 @@
-# 08 — OCHA JIAF Nigeria 2026 (Humanitarian Needs PiN and Severity)
+# 08, OCHA JIAF Nigeria 2026 (Humanitarian Needs PiN and Severity)
 
 ## Source
 
@@ -43,20 +43,20 @@ the iMMAP 2019 school list (source 03). See `docs/adamawa_decision.md`.
 
 ## Key fields
 
-- **Education PiN** — Education sector "People in Need" estimate (count of
+- **Education PiN:** Education sector "People in Need" estimate (count of
   individuals identified by the Education Cluster as needing assistance).
-- **Education Severity** — Education sector intersectoral severity score
-  on the standard humanitarian 1-5 scale: 1 = Minimal, 2 = Stress,
+- **Education Severity:** Education sector intersectoral severity score
+  on the standard humanitarian 1 to 5 scale: 1 = Minimal, 2 = Stress,
   3 = Severe, 4 = Extreme, 5 = Catastrophic.
 
 In the BAY scope the observed Education Severity values are 2, 3, and 4.
 Adamawa LGAs span 2 and 3, which is consistent with the conflict and
-displacement signal we see independently.
+displacement signal seen independently.
 
 ## How it is used in this pipeline
 
 `scripts/08_clean_education_jiaf.py` produces
-`data/clean/education_jiaf_by_lga.csv`. The min-max-normalised severity
+`data/clean/education_jiaf_by_lga.csv`. The min max normalised severity
 score (`education_severity_score_norm`) is **the third indicator** in the
 composite priority score (replacing the iMMAP `pct_closed` indicator).
 The raw `education_pin` field is carried through to the published popup
@@ -64,13 +64,13 @@ as a context number.
 
 ## Pcode format
 
-`Admin 2 P-Code` matches OCHA COD-AB exactly (`NG002001`-style); no
+`Admin 2 P-Code` matches OCHA COD-AB exactly (`NG002001` style); no
 normalisation needed.
 
 ## Provenance note
 
-JIAF outputs are the *agreed* humanitarian community estimate for the
-year — i.e. the figure used by donors, OCHA pooled funds, the Education
-Cluster's own HRP project sheets, and partner allocations. Using this
-indicator means the priority map reflects the humanitarian system's own
-sectoral judgment, not a derivation from one partner's school inventory.
+JIAF outputs are the *agreed* humanitarian community estimate for the year:
+the figure used by donors, OCHA pooled funds, the Education Cluster's own
+HRP project sheets, and partner allocations. Using this indicator means
+the priority map reflects the humanitarian system's own sectoral judgment,
+not a derivation from one partner's school inventory.

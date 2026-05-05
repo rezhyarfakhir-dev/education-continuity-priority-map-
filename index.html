@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Education Continuity Priority Map — North East Nigeria (reference case)</title>
+<title>Education Continuity Priority Map, North East Nigeria (reference case)</title>
 <meta name="description" content="A transferable open-data method for prioritising areas at risk of education disruption in conflict-affected regions. Demonstrated on North East Nigeria." />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="assets/style.css" />
@@ -11,14 +11,14 @@
 <body>
 <header class="hero">
   <div class="hero-inner">
-    <span class="eyebrow">Open-data method · Reference case</span>
-    <h1>22 LGAs in North East Nigeria should be field-validated first for education response.</h1>
-    <p class="sub"><strong>Areas in red combine recent conflict, mass displacement, severe education-sector stress, and limited access to functioning schools.</strong> These are the places to look first. The same method can be re-pointed to any country where comparable open data exists.</p>
+    <span class="eyebrow">Open data method, reference case</span>
+    <h1>22 LGAs in North East Nigeria should be field validated first for education response.</h1>
+    <p class="sub"><strong>Areas in red combine recent conflict, mass displacement, severe education sector stress, and limited access to working schools.</strong> These are the places to look first. The same method can be re-pointed to any country where comparable open data exists.</p>
 
     <div class="kpis">
       <div class="kpi">
         <span class="kpi-num">4,517</span>
-        <span class="kpi-lbl">Political-violence events since 2020 (ACLED)</span>
+        <span class="kpi-lbl">Political violence events since 2020 (ACLED)</span>
       </div>
       <div class="kpi">
         <span class="kpi-num">4.3M</span>
@@ -29,7 +29,7 @@
         <span class="kpi-lbl">LGAs scored across Borno, Adamawa, Yobe</span>
       </div>
       <div class="kpi kpi-accent">
-        <span class="kpi-num" id="kpi-high-num">—</span>
+        <span class="kpi-num" id="kpi-high-num">n/a</span>
         <span class="kpi-lbl">LGAs ranked highest priority</span>
       </div>
     </div>
@@ -45,7 +45,7 @@
 <main>
   <section class="finding">
     <p class="finding-eyebrow">Headline finding</p>
-    <p class="finding-text"><strong>22 of 65 BAY LGAs score in the highest priority class</strong> — <span class="f-borno">15 in Borno</span>, <span class="f-adamawa">4 in Adamawa</span>, <span class="f-yobe">3 in Yobe</span>. The top five (Bama, Gwoza, Damboa, Monguno, Geidam) score on every indicator simultaneously. <em>Click any LGA on the map below to see the four numbers driving its score.</em></p>
+    <p class="finding-text"><strong>22 of 65 BAY LGAs score in the highest priority class.</strong> That is <span class="f-borno">15 in Borno</span>, <span class="f-adamawa">4 in Adamawa</span>, and <span class="f-yobe">3 in Yobe</span>. The top five (Bama, Gwoza, Damboa, Monguno, Geidam) score on every indicator at once. <em>Click any LGA on the map below to see the four numbers driving its score.</em></p>
   </section>
 
   <section class="map-wrap">
@@ -56,25 +56,25 @@
   <section class="insights" id="insights">
     <article>
       <h2 id="insight-conflict-h">Conflict concentrates in Borno</h2>
-      <p id="insight-conflict-t">Loading…</p>
+      <p id="insight-conflict-t">Loading...</p>
     </article>
     <article>
       <h2 id="insight-displaced-h">Displacement at scale</h2>
-      <p id="insight-displaced-t">Loading…</p>
+      <p id="insight-displaced-t">Loading...</p>
     </article>
     <article>
       <h2 id="insight-validation-h">All 65 LGAs scored with JIAF 2026</h2>
-      <p id="insight-validation-t">Loading…</p>
+      <p id="insight-validation-t">Loading...</p>
     </article>
   </section>
 
   <section class="caption">
-    <p><strong>How to read this map.</strong> Each LGA is scored on four things: (1) how many recorded political-violence events have occurred there since 2020, (2) how many displaced people are currently living there, (3) how severely the OCHA Education Cluster rates the education situation for 2026, and (4) how many school-age children live more than 5 km from a working school. The scores are combined into one number; LGAs in the top third are red, the middle third orange, the bottom third yellow. <span class="caption-method">Method detail: unweighted mean of four min-max-normalised indicators per LGA, tercile-classified. The OCHA JIAF Education layer replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state-wide data ceiling — see <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a>.</span></p>
+    <p><strong>How to read this map.</strong> Each LGA is scored on four things: how many recorded political violence events have happened there since 2020, how many displaced people are currently living there, how severely the OCHA Education Cluster rates the education situation for 2026, and how many school age children live more than 5 km from a working school. The four scores are combined into one number. LGAs in the top third are red, the middle third orange, the bottom third yellow. <span class="caption-method">Method detail: unweighted mean of four min max normalised indicators per LGA, tercile classified. The OCHA JIAF Education layer replaces an earlier iMMAP 2019 school list whose Adamawa coverage had a state wide data ceiling. See <a href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-/blob/main/docs/adamawa_decision.md">docs/adamawa_decision.md</a>.</span></p>
   </section>
 
   <footer class="src">
-    <p><strong>Sources:</strong> ACLED political-violence events (Apr 2026, CC BY-NC-SA 4.0); IOM DTM Round 50 (Oct 2025); <strong>OCHA JIAF Nigeria 2026 — Education sector PiN &amp; Severity</strong> (2026 HNO); iMMAP / Education Sector school list (Jun 2019, context only); OCHA Nigeria COD-AB (current); UNFPA / NPC Nigeria population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026).</p>
-    <p><strong>Repository:</strong> <a class="btn" href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-" target="_blank" rel="noopener">View on GitHub →</a> raw data, cleaning scripts, method notes and AI disclosure.</p>
+    <p><strong>Sources:</strong> ACLED political violence events (Apr 2026, CC BY-NC-SA 4.0); IOM DTM Round 50 (Oct 2025); <strong>OCHA JIAF Nigeria 2026, Education sector PiN and Severity</strong> (2026 HNO); iMMAP / Education Sector school list (Jun 2019, context only); OCHA Nigeria COD-AB (current); UNFPA / NPC Nigeria population projections (2022); HeiGIT Global Education Accessibility Indicators (Feb 2026).</p>
+    <p><strong>Repository:</strong> <a class="btn" href="https://github.com/rezhyarfakhir-dev/education-continuity-priority-map-" target="_blank" rel="noopener">View on GitHub</a> raw data, cleaning scripts, method notes and AI disclosure.</p>
   </footer>
 </main>
 

@@ -16,7 +16,7 @@ assert len(bay_adm2["features"]) == 65, "expected 65 BAY LGAs"
 OCHA admin2 has 774 features nationally; filtering to `adm1_name in
 {Borno, Adamawa, Yobe}` returns exactly 65 (Borno 27, Adamawa 21, Yobe 17).
 
-## 2. BAY school-age population (5-14)
+## 2. BAY school age population (5 to 14)
 
 `scripts/05_clean_boundaries.py`:
 
@@ -26,8 +26,8 @@ assert total_5_14 == 3_926_751, f"unexpected total: {total_5_14}"
 
 UNFPA / NPC 2022 projection, sheet `nga_admpop_adm1_2022`:
 
-| State | Pop 5-9 | Pop 10-14 | Pop 5-14 |
-|-------|---------|-----------|----------|
+| State | Pop 5 to 9 | Pop 10 to 14 | Pop 5 to 14 |
+|-------|------------|--------------|-------------|
 | Borno | (sums to) | (sums to) | 1,555,673 |
 | Adamawa | | | 1,331,643 |
 | Yobe | | | 1,039,435 |
@@ -43,9 +43,10 @@ This number is cited in the artifact's "displacement at scale" insight panel.
 assert len(merged) == 44
 ```
 
-The scored set excludes Adamawa (21 LGAs) and contains BO+YO = 44 LGAs.
+The historical (pre JIAF) scored set excluded Adamawa (21 LGAs) and
+contained BO+YO = 44 LGAs.
 
-## 4. Adamawa LGA count for the validation-needed set
+## 4. Adamawa LGA count for the validation needed set
 
 `scripts/03_clean_schools.py`:
 
@@ -61,12 +62,12 @@ assert len(ad_out) == 21
 assert ad_closed == 0, "expected 0 closed schools in Adamawa (data ceiling)"
 ```
 
-The assertion is preserved even though iMMAP no longer drives the
-composite — it documents the historical reason JIAF was added. If iMMAP
-ever publishes a refreshed school list with non-zero closures in Adamawa,
-this assertion fails and the pipeline is forced into manual review.
+The assertion is kept even though iMMAP no longer drives the composite. It
+documents the historical reason JIAF was added. If iMMAP ever publishes a
+refreshed school list with non zero closures in Adamawa, this assertion
+fails and the pipeline is forced into manual review.
 
-## 6. JIAF BAY coverage (the score-driving indicator)
+## 6. JIAF BAY coverage (the score driving indicator)
 
 `scripts/08_clean_education_jiaf.py`:
 
@@ -91,8 +92,8 @@ assert df["education_severity_score_norm"].isna().sum() == 0
 assert df["composite_score"].isna().sum() == 0
 ```
 
-Guarantees every one of the 65 LGAs has a classifiable composite score.
-The "validation needed" branch from the prior pipeline is therefore
+This guarantees every one of the 65 LGAs has a classifiable composite
+score. The "validation needed" branch from the prior pipeline is therefore
 structurally impossible to reach.
 
 ## ACLED sheet name
@@ -101,11 +102,11 @@ ACLED's published workbook ships with a default first sheet that contains
 the licensing notice ("TOU"). The cleaning script must specify
 `sheet_name="Data"` or it will silently parse the wrong sheet.
 
-## DTM sheet name + pcode normalisation
+## DTM sheet name and pcode normalisation
 
-DTM's workbook also requires `sheet_name="Data"`. DTM uses `NGA002001`-style
-pcodes; OCHA admin codes use `NG002001`. The cleaning script strips the
-leading "A" inside the prefix.
+DTM's workbook also requires `sheet_name="Data"`. DTM uses `NGA002001`
+style pcodes; OCHA admin codes use `NG002001`. The cleaning script strips
+the leading "A" inside the prefix.
 
 ## iMMAP encoding
 
@@ -115,6 +116,6 @@ leading "A" inside the prefix.
 
 HeiGIT publishes one row per (LGA, distance band) only when the band
 captures population. An LGA that does not appear at the 5 km band has 0 %
-of its school-age population within 5 km, i.e. weak access = 100 %. The
+of its school age population within 5 km, so weak access is 100 %. The
 cleaning script treats a missing 5 km row as 0 % share rather than as a
 match failure.

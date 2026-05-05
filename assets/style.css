@@ -75,7 +75,7 @@ a:hover { color: var(--orange-400); border-bottom-color: var(--orange-400); }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
 /* ============================================================
-   HERO — sits on the dark teal canvas, no separate background
+   HERO, sits on the dark teal canvas, no separate background
    ============================================================ */
 .hero {
   padding: 56px 24px 40px;
@@ -181,7 +181,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 }
 
 /* ============================================================
-   Main content — light cards on the dark canvas
+   Main content, light cards on the dark canvas
    ============================================================ */
 main {
   max-width: 1080px;
