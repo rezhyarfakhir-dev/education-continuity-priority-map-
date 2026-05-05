@@ -111,12 +111,16 @@ function buildLegend() {
 function addCallouts(map) {
   const callouts = [
     {
-      latlng: [11.65, 13.55],
+      // Anchor sits east of Bama in the empty Cameroon area; tooltip
+      // floats further east so it never covers the southern Borno cluster.
+      latlng: [11.45, 14.20],
       direction: "right",
       html: `<strong>Southern Borno belt</strong>10 high priority LGAs cluster here<span class="co-sub">Bama, Gwoza, Damboa, Konduga</span>`,
     },
     {
-      latlng: [13.05, 12.35],
+      // Anchor sits north of Yobe in the empty Niger area; tooltip floats
+      // further north so it stays clear of the frontier LGAs.
+      latlng: [13.80, 12.20],
       direction: "top",
       html: `<strong>Northern frontier corridor</strong>Lake Chad and Yobe border<span class="co-sub">Monguno, Mobbar, Abadam, Geidam</span>`,
     },
@@ -159,7 +163,12 @@ async function load() {
   }).addTo(map);
 
   addCallouts(map);
-  map.fitBounds(lgaLayer.getBounds(), { padding: [10, 10] });
+  // Extend bounds so the off-polygon callouts (east in Cameroon,
+  // north in Niger) stay on canvas at any viewport width.
+  const b = lgaLayer.getBounds();
+  b.extend([11.45, 14.60]);   // east room for Southern Borno callout
+  b.extend([14.30, 12.20]);   // north room for Northern frontier callout
+  map.fitBounds(b, { padding: [12, 12] });
 
   buildLegend();
   renderFindings(insights);
